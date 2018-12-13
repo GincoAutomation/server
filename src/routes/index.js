@@ -1,38 +1,15 @@
 const express = require('express');
 const router = express.Router();
 
-/* GET home page. */
+const system = require('../system/system');
+
 router.get('/state', function(req, res, next) {
-  res.json({
-    switches:[
-      {
-        id: "Switch1",
-        state: 0
-      },
-      {
-        id: "Switch2",
-        state: 0
-      },
-      {
-        id: "Switch3",
-        state: 0
-      }
-    ],
-    lights:[
-      {
-        id: "Blue",
-        state: 1
-      },
-      {
-        id: "Yellow",
-        state: 0
-      },
-      {
-        id: "Green",
-        state: 1
-      }
-    ]
-  });
+  res.json(system.getState());
+});
+
+router.post('/event', function(req, res, next) {
+  system.handleEvent(req.body);
+  res.json(system.getState());
 });
 
 
