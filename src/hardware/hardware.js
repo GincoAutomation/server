@@ -15,16 +15,16 @@ class Hardware {
         else {
           console.log(`Button ${id} ${value ? 'pressed' : 'released'}`);
           if (id == 'Button1') this.setLight('Blue', value);
-          else if (id == 'Button2') this.setLight('Yellow', value);
-          else this.setLight('Green', value);
+          else if (id == 'Button2') this.setLight('Green', value);
+          else this.setLight('Yellow', value);
         }
       })
     });
 
     this.lights = {
-      Yellow: new Gpio(17, 'out'),
+      Blue: new Gpio(17, 'out'),
       Green: new Gpio(27, 'out'),
-      Blue: new Gpio(22, 'out'),
+      Yellow: new Gpio(22, 'out'),
     }
   }
 
