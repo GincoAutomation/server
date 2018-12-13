@@ -37,7 +37,7 @@ class Hardware {
     if (this.lights[id]){
       console.log(`Set light ${id} ${value ? 'on' : 'off'}`);
       this.lights[id].writeSync(value ? 1 : 0);
-      this._fireEvent('light', id, value);
+      this._fireEvent('light', id, value ? 1 : 0);
     } else console.error(`Light with id: ${id} does not exist`);
   }
 
