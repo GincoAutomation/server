@@ -6,15 +6,15 @@ router.get('/state', function(req, res, next) {
   res.json({
     switches:[
       {
-        id: "Switch 1",
+        id: "Switch1",
         state: 0
       },
       {
-        id: "Switch 2",
+        id: "Switch2",
         state: 0
       },
       {
-        id: "Switch 3",
+        id: "Switch3",
         state: 0
       }
     ],
@@ -28,7 +28,7 @@ router.get('/state', function(req, res, next) {
         state: 0
       },
       {
-        id: "Groeen",
+        id: "Green",
         state: 1
       }
     ]
