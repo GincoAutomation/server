@@ -14,9 +14,7 @@ class Hardware {
         if (err) console.error(err);
         else {
           console.log(`Button ${id} ${value ? 'pressed' : 'released'}`);
-          if (id == 'Button1') this.setLight('Blue', value);
-          else if (id == 'Button2') this.setLight('Green', value);
-          else this.setLight('Yellow', value);
+          this._fireEvent('button', id, value);
         }
       })
     });
@@ -26,6 +24,8 @@ class Hardware {
       Green: new Gpio(27, 'out'),
       Yellow: new Gpio(22, 'out'),
     }
+
+    this.eventListeners = {}
   }
 
   shutdown(){
@@ -37,15 +37,26 @@ class Hardware {
     if (this.lights[id]){
       console.log(`Set light ${id} ${value ? 'on' : 'off'}`);
       this.lights[id].writeSync(value ? 1 : 0);
+      this._fireEvent('light', id, value);
     } else console.error(`Light with id: ${id} does not exist`);
+  }
+
+  getState(id){
+    if (this.buttons[id]) return this.buttons[id].readSync();
+    if (this.lights[id]) return this.lights[id].readSync();
+    console.error(`No devive fount with id ${id}`);
+  }
+
+  on(eventType, fn){
+    if (!this.eventListeners[eventType]) this.eventListeners[eventType] = [];
+    this.eventListeners[eventType].push(fn);
+  }
+
+  _fireEvent(eventType, ...args){
+    if (this.eventListeners[eventType]){
+      this.eventListeners[eventType].forEach(fn => fn(...args))
+    }
   }
 }
 
-console.log('start program');
-hw = new Hardware();
-
-process.on('SIGINT', () => {
-  console.log("end program");
-  hw.shutdown();
-  process.exit();
-});
+module.exports = Hardware;
