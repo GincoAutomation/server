@@ -50,4 +50,6 @@ echo $?         # check exit code of last command
 MDNS is on by default. find pi with `ping raspberrypi.local`
 
 ## Getting started
-- Install [node.js](https://nodejs.org/en/) > v10
+start server
+- `npm run start` start the server
+- `npm run watch` autorestarts the server on every change
