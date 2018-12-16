@@ -11,8 +11,8 @@ sudo apt-get dist-upgrade
 ```
 Install Node and n (Node version manager)
 ```
-curl -L https://git.io/n-install | bash
-node -v
+git clone https://github.com/tj/n.git && cd n && sudo make install && cd ..
+sudo n lts
 ```
 
 Create and add ssh key to github account: [see help](https://help.github.com/articles/connecting-to-github-with-ssh/).
@@ -20,6 +20,7 @@ Create and add ssh key to github account: [see help](https://help.github.com/art
 
 Clone server repository on raspberry pi
 ```
+mkdir ~/HomeAutomation && cd ~/HomeAutomation
 git clone git@github.com:RoetsNv/server.git
 ```
 
