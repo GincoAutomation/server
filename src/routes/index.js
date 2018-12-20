@@ -12,5 +12,9 @@ router.post('/event', function(req, res, next) {
   res.json(system.getState());
 });
 
+router.all('/*', function(req, res, next) {
+  res.status(404).send("Incorrect API");
+})
+
 
 module.exports = router;

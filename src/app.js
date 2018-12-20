@@ -17,11 +17,10 @@ const uiPath = path.resolve(path.resolve(__dirname, '../../ui'));
 app.use(express.static(path.resolve(uiPath, './build'))); 
 
 // API routing
-app.use('/', indexRouter);
+app.use('/API', indexRouter);
 
 app.get('/*', function (req, res) {
   res.sendFile(path.resolve(uiPath, './build/index.html'));
 });
-
 
 module.exports = app;
