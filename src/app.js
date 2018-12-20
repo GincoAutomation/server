@@ -13,8 +13,11 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 
+// serve build of ui project at root
+app.use(express.static('../ui/build')); 
+
+// API routing
 app.use('/', indexRouter);
 
 module.exports = app;
