@@ -1,4 +1,10 @@
-const Hardware = require('./hardware');
+let Hardware;
+try {
+  Hardware = require('./hardware');
+} catch {
+  Hardware = require('./hardwareMock')
+  console.log("No hardware found, starting with mock hardware");
+}
 
 class System {
   constructor(){
