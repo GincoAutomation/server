@@ -25,8 +25,8 @@ class System {
     }
 
     // update internal state when hardware changes
-    this.hardware.on('light', (id, value) => this.state.lights[id] = value)
-    this.hardware.on('button', (id, value) => this.state.buttons[id] = value);
+    this.hardware.on('light', (id, value) => this._changeState('lights', id, value))
+    this.hardware.on('button', (id, value) => this._changeState('buttons', id, value));
 
 
     this.hardware.on('button', (id, value) => {
@@ -38,6 +38,7 @@ class System {
       }
     })
     
+    this.eventListeners = {};
   }
 
   getState(){
@@ -57,6 +58,27 @@ class System {
       this.hardware.setLight(lightId, !this.state.lights[lightId]);
     }
   }
+
+  on(eventType, fn){
+    if (!this.eventListeners[eventType]) this.eventListeners[eventType] = [];
+    this.eventListeners[eventType].push(fn);
+  }
+
+  _changeState(path, id, value){
+    const oldValue = this.state[path][id];
+    this.state[path][id] = value;
+    this._fireEvent('event', { 
+      type: 'stateChange',
+      path, id, oldValue, value 
+    })
+  }
+
+  _fireEvent(eventType, ...args){
+    if (this.eventListeners[eventType]){
+      this.eventListeners[eventType].forEach(fn => fn(...args))
+    }
+  }
+  
 }
 
 console.log('start Home Automation system');
