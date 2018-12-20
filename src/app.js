@@ -15,9 +15,15 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 // serve build of ui project at root
-app.use(express.static('../ui/build')); 
+const uiPath = path.resolve(path.resolve(__dirname, '../../ui'));
+app.use(express.static(path.resolve(uiPath, './build'))); 
 
 // API routing
 app.use('/', indexRouter);
+
+app.get('/*', function (req, res) {
+  res.sendFile(path.resolve(uiPath, './build/index.html'));
+});
+
 
 module.exports = app;
