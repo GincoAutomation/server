@@ -11,7 +11,7 @@ const sync = new Rsync()
     .compress()
     .flags('v')
     .source(path.join(__dirname, '..') + '/')
-    .exclude(['.git', '.DS_Store', 'node_modules'])
+    .exclude(['.*', 'node_modules'])
     .destination(`${config.user}@${config.hostName}:~/HomeAutomation/server`);
 
 // console.log(sync.command())

@@ -5,6 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "start": "node ./bin/www",
+    "debug": "node --inspect-brk=0.0.0.0:9229 ./bin/www",
     "watch": "nodemon ./bin/www",
     "buildUi": "cd ../ui && git pull && npm install && npm run build",
     "sync": "node ./bin/sync",

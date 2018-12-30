@@ -13,7 +13,7 @@ sudo apt-get dist-upgrade
 Install Node and n (Node version manager)
 ```
 git clone https://github.com/tj/n.git && cd n && sudo make install && cd ..
-sudo n lts
+sudo n latest
 ```
 
 Clone server and ui repository on raspberry pi
@@ -50,6 +50,7 @@ curl -L https://code.headmelted.com/installers/apt.sh | sudo bash
 ## Start server development
 Available scripts on current machine:
 - `npm run start` start the server on current machine
+- `npm run debug` start the server on current machine in debug mode
 - `npm run watch` autorestarts the server on every change of source code
 - `npm run buildUi` pulls the latest changes in the ui repo, and create a production build that will be served by this server
 
@@ -62,6 +63,22 @@ So recommend development flow:
 - power up raspberry pi and make sure it is connected to your local network.
 - `npm run remote -- watch` to start the server on the raspberry pi in watch mode
 - run `npm run sync` everytime you want to sync your updated source code on your local machine to the raspberry pi. the already running watcher will automatically restart the server after every sync.
+
+## Debug server
+### using VSCode:
+#### local server:
+- In the debug tab of VSCode select the 'Debug server' launch configuration and press 'Start Debugging' (Green arrow)
+
+#### server on raspberry pi:
+- `npm run sync` : sync your local code to the raspberry pi
+- `npm run remote -- debug`: start the remote server in debug mode
+- In the debug tab of VSCode select the 'Debug remote server' launch configuration and press 'Start Debugging'
+
+### using Chrome dev tools:
+- Open dedicated Dev tools for node.js: click node icon in top left bar of chrome dev tools
+- 'Add Connection': "raspberrypi.local:9229"
+- start the server (remotely) in debug mode: `npm run debug` or `npm run remote -- debug` 
+- Chrome dev tools will automatically connect
 
 
 ## Extra info
