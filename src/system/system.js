@@ -9,7 +9,7 @@ try {
 class System {
   constructor(){
     this.hardware = new Hardware();
-
+    
     // get initial state from hardware
     this.state = {
       buttons: {

@@ -4,6 +4,8 @@ const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 class Hardware {
   constructor(){
+    this.type = 'Raspberry pi';
+    
     this.buttons = {
       Button1: new Gpio(2, 'in', 'both', {debounceTimeout: 10, activeLow: true}), // GPIO 0-8 has internal pull-ups enabled by defualt
       Button2: new Gpio(3, 'in', 'both', {debounceTimeout: 10, activeLow: true}),

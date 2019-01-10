@@ -1,6 +1,8 @@
 
 class Hardware {
   constructor(){
+    this.type = 'mockup hardware';
+    
     this.buttons = {
       Button1: { state: 0 },
       Button2: { state: 0 },
