@@ -80,7 +80,19 @@ So recommend development flow:
 - start the server (remotely) in debug mode: `npm run debug` or `npm run remote -- debug` 
 - Chrome dev tools will automatically connect
 
+## Setup database:
+We use [mongodb](https://www.mongodb.com/) for storing data.
 
+### Installation on mac:
+```
+brew update
+brew install mongodb
+mkdir -p ./data/db
+```
+`mongod --dbpath ./data/db/` to start a local database
+
+### Gui for development
+[Mongo db Compass](https://docs.mongodb.com/compass/current/install/) is a graphical user interface on the raw database to easily view and query the database directly.
 ## Extra info
 ### Useful linux commands
 See [common linux commands](https://www.raspberrypi.org/documentation/linux/usage/commands.md)

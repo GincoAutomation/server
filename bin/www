@@ -8,8 +8,16 @@ var http = require('http');
 const WebSocket = require('ws');
 
 const config = require('../config/config');
-var app = require('../src/app');
+const app = require('../src/app');
+const db = require('../src/database');
 var wsHandlers = require('../src/ws');
+
+
+/**
+ * Connect to (local) database
+ */
+
+db.connect(config.database.url, config.database.name);
 
 /**
  * Get port from environment and store in Express.
