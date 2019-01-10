@@ -13,13 +13,20 @@ class Database{
     try{
       this._client = new MongoClient(url, { useNewUrlParser: true });
       await this._client.connect();
+      this._client.on('close', () => {
+        console.log("Database disconnected");
+        this.connected = false;
+        this._db = null;
+        this._client = null;
+      })
       this._db = this._client.db(name);
       console.log(`Connected to database ${url}/${name}`);
       this.connected = true;
 
     } catch(err){
       this.connected = false;
-      console.error('Database ', err);
+      console.error(`Could not connect to Database ${url}/${name}`);
+      if (err.name != 'MongoNetworkError') console.error(err);
     }
   }
 
@@ -32,6 +39,10 @@ class Database{
     }
   }
 
+  collection(name){
+    if (this.connected == false) throw "Not connected to database.";
+    return this._db.collection(name);
+  }
 }
 
 const db = new Database();
