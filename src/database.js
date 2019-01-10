@@ -12,16 +12,23 @@ class Database{
     if (this._db) return;
     try{
       this._client = new MongoClient(url, { useNewUrlParser: true });
-      await this._client.connect();
+
       this._client.on('close', () => {
         console.log("Database disconnected");
         this.connected = false;
         this._db = null;
-        this._client = null;
       })
-      this._db = this._client.db(name);
+
+      this._client.on('reconnect', () => {
+        console.log("Database reconnected");
+        this.connected = true;
+        this._db = this._client.db(name);
+      })
+
+      await this._client.connect();
       console.log(`Connected to database ${url}/${name}`);
       this.connected = true;
+      this._db = this._client.db(name);
 
     } catch(err){
       this.connected = false;
@@ -35,7 +42,6 @@ class Database{
       this._client.close();
       this.connected = false;
       this._db = null;
-      this._client = null;
     }
   }
 
