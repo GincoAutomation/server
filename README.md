@@ -93,7 +93,13 @@ mkdir -p ./data/db
 
 ### Gui for development
 [Mongo db Compass](https://docs.mongodb.com/compass/current/install/) is a graphical user interface on the raw database to easily view and query the database directly.
+
 ## Extra info
+### Useful resources
+- [Express](https://expressjs.com/) Fast, unopinionated, minimalist web server framework.
+- [Mongo DB NodeJs Tutorials](http://mongodb.github.io/node-mongodb-native/3.1/quick-start/quick-start/)
+- [Mongo DB NodeJs API](http://mongodb.github.io/node-mongodb-native/3.1/api/Collection.html)
+
 ### Useful linux commands
 See [common linux commands](https://www.raspberrypi.org/documentation/linux/usage/commands.md)
 ```
