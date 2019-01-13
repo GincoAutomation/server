@@ -25,7 +25,7 @@ router.use(systemRouter);
 
 // All unkown routes result in 404 error
 router.all('/*', function(req, res, next) {
-  res.status(404).send("Incorrect API");
+  res.status(404).send("Incorrect API route");
 })
 
 module.exports = router;
