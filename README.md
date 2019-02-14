@@ -116,4 +116,4 @@ echo $?         # check exit code of last command
 - To make raspberry pi hostname discoverable on windows, install [bonjour service](https://support.apple.com/kb/DL999?locale=en_US)
 - Install git, create ssh key, auto run [ssh-agent](https://help.github.com/articles/working-with-ssh-key-passphrases/)
 - Use git bash as default terminal in vscode: set '"terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe"'
-- testjes
+- testjess
