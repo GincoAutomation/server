@@ -35,10 +35,12 @@ curl -L https://code.headmelted.com/installers/apt.sh | sudo bash
 
 ### connect to raspberry-pi
 ##### Find Raspberry pi's IP:
-- MDNS on raspberry pi is on by default. Find pi with `ping raspberrypi.local`
+- mDNS on raspberry pi is on by default. Find pi with `ping raspberrypi.local`
+- to make raspberry pi hostname discoverable on windows, install [bonjour service](https://support.apple.com/kb/DL999?locale=en_US)
 - Find raspberry in router
 - On raspberry pi execute `hostname -I `
 ##### Over ssh
+- On windows: use git bash and set default terminal of vscode to git bash in settings.
 - Check if you already have an ssh key otherwise create one: [help](https://help.github.com/articles/connecting-to-github-with-ssh/)
 - Add your public ssh key to raspberry pi: `ssh-copy-id -i ~/.ssh/id_rsa pi@raspberrypi.local`
 - login to raspberry: `ssh pi@raspberrypi.local` or `ssh pi@192.168.1.21`
