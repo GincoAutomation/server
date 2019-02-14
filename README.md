@@ -52,6 +52,7 @@ Available scripts on current machine:
 - `npm run start` start the server on current machine
 - `npm run debug` start the server on current machine in debug mode
 - `npm run watch` autorestarts the server on every change of source code
+- `npm run start-db` starts the database
 - `npm run buildUi` pulls the latest changes in the ui repo, and create a production build that will be served by this server
 
 To remotely develop code on your pc, but still run server on raspberry pi:
@@ -89,7 +90,7 @@ brew update
 brew install mongodb
 mkdir -p ./data/db
 ```
-`mongod --dbpath ./data/db/` to start a local database
+`mongod --dbpath ./data/db/` or `npm run start-db` to start a local database
 
 ### Gui for development
 [Mongo db Compass](https://docs.mongodb.com/compass/current/install/) is a graphical user interface on the raw database to easily view and query the database directly.
