@@ -49,6 +49,7 @@ curl -L https://code.headmelted.com/installers/apt.sh | sudo bash
 
 ## Start server development
 Available scripts on current machine:
+- `npm install` install the dependencies
 - `npm run start` start the server on current machine
 - `npm run debug` start the server on current machine in debug mode
 - `npm run watch` autorestarts the server on every change of source code
@@ -92,6 +93,10 @@ mkdir -p ./data/db
 ```
 `mongod --dbpath ./data/db/` or `npm run start-db` to start a local database
 
+### Installation on windows:
+Follow [installation doc](https://docs.mongodb.com/v3.2/tutorial/install-mongodb-on-windows/)
+
+
 ### Gui for development
 [Mongo db Compass](https://docs.mongodb.com/compass/current/install/) is a graphical user interface on the raw database to easily view and query the database directly.
 
@@ -116,4 +121,4 @@ echo $?         # check exit code of last command
 - To make raspberry pi hostname discoverable on windows, install [bonjour service](https://support.apple.com/kb/DL999?locale=en_US)
 - Install git, create ssh key, auto run [ssh-agent](https://help.github.com/articles/working-with-ssh-key-passphrases/)
 - Use git bash as default terminal in vscode: set '"terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe"'
-- testjess
+- Install [nvm-windows](https://github.com/coreybutler/nvm-windows#node-version-manager-nvm-for-windows) [node](https://nodejs.org/en/)
