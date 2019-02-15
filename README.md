@@ -59,8 +59,11 @@ git clone https://github.com/RoetsNv/server.git
 cd server && npm install
 ```
 
-Install mongodb
-
+Install mongodb.a
+Latest version that is available on 32 bit systems is Mongodb 3.0.14. [Install instructions](https://andyfelong.com/2017/08/mongodb-3-0-14-for-raspbian-stretch/)
+```
+mkdir -p ./data/db
+```
 
 #### For development on Raspberry pi
 Create ssh key on raspberry pi and add to github account: [see help](https://help.github.com/articles/connecting-to-github-with-ssh/).
