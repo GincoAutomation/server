@@ -7,9 +7,8 @@
 - Install a Node version manager and [Node](https://nodejs.org/en/):
     - Mac `brew install n`
     - Linux `sudo apt-get install n`
-    - Windows: Install [nvm-windows](https://github.com/coreybutler/nvm-windows#node-version-manager-nvm-for-windows)
+    - Windows: Install [nvm-windows](https://github.com/coreybutler/nvm-windows#node-version-manager-nvm-for-windows). If your user name on windows contains spaces, open the 'settings.txt' file in AppData\Roaming\nvm and change the root path into a windows location without spaces: `cmd /c for %A in ("C:\Users\My Name With Spaces\AppData\Roaming\nvm") do @echo %~sA`
     - Install node: `n latest` for mac and linux, `nvm install latest && nvm use [version]`
-- Install [Python](https://www.python.org/downloads/)
 - Install [MongoDb](https://www.mongodb.com/download-center/community)
     - Mac `brew install mongodb`
     - Linux: see [info](https://docs.mongodb.com/v3.2/administration/install-on-linux/)
@@ -18,6 +17,7 @@
 Windows specific
 - (Install [Cygwin](https://cygwin.com/install.html) which is a large collection of GNU and Open Source Unix tools, build for windows. Download the installer, move it to c:\temp, run it, in the package overview search for rsync and install the tools. Add another Environment variable to your Path: 'C:\cygwin64\bin';)
 - Install [rsync in Git bash](https://blog.tiger-workshop.com/add-rsync-to-git-bash-for-windows/)
+- Install windows build tools: `npm install --global windows-build-tools`
 - To make raspberry pi hostname discoverable on windows, install [bonjour service](https://support.apple.com/kb/DL999?locale=en_US).
 
 Check if you already have an ssh key, otherwise create one and add it to your github account: [see help](https://help.github.com/articles/connecting-to-github-with-ssh/).
