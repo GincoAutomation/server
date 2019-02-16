@@ -5,7 +5,7 @@ const npmCommand = process.argv[2];
 
 // 1) using spawn
 const { spawn } = require('child_process');
-const cmd = spawn(`ssh -t ${config.user}@${config.hostName} 'cd ~/HomeAutomation/server && npm run ${npmCommand}'`, {
+const cmd = spawn(`ssh -t ${config.user}@${config.hostName} "cd ~/HomeAutomation/server && npm run ${npmCommand}"`, {
   stdio: 'inherit',
   shell: true
 });

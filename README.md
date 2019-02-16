@@ -15,6 +15,9 @@
     - Linux: see [info](https://docs.mongodb.com/v3.2/administration/install-on-linux/)
     - Windows: download and install the .msi installer. Add mongodb to your Path: Open Control Panel > System and Security > System > Advanced System Settings > Environment variables > Edit Path and add a new line: 'C:\Program Files\MongoDB\Server\4.0\bin'
     - [Mongo db Compass](https://docs.mongodb.com/compass/current/install/) is a graphical user interface on the raw database to easily view and query the database directly.
+Windows specific
+- (Install [Cygwin](https://cygwin.com/install.html) which is a large collection of GNU and Open Source Unix tools, build for windows. Download the installer, move it to c:\temp, run it, in the package overview search for rsync and install the tools. Add another Environment variable to your Path: 'C:\cygwin64\bin';)
+- Install [rsync in Git bash](https://blog.tiger-workshop.com/add-rsync-to-git-bash-for-windows/)
 - To make raspberry pi hostname discoverable on windows, install [bonjour service](https://support.apple.com/kb/DL999?locale=en_US).
 
 Check if you already have an ssh key, otherwise create one and add it to your github account: [see help](https://help.github.com/articles/connecting-to-github-with-ssh/).

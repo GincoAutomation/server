@@ -81,7 +81,7 @@ class System {
   
 }
 
-console.log('start Home Automation system');
+console.log('Start Home Automation system');
 const system = new System();
 
 process.on('SIGINT', () => {
