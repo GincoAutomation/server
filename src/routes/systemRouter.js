@@ -16,17 +16,17 @@ router.post('/event', function(req, res) {
 });
 
 // via websockets
-ws.subscribe((message) => {
+ws.subscribe(message => {
   console.log('ws received: ', message);
   let event;
   try {
     event = JSON.parse(message);
-  } catch(err) {
-    console.log("ws received message is not a json")
+  } catch (err) {
+    console.log('ws received message is not a json');
   }
   if (event) system.handleEvent(event);
 });
 
-system.on('event', event => ws.broadcast(JSON.stringify(event)))
+system.on('event', event => ws.broadcast(JSON.stringify(event)));
 
 module.exports = router;

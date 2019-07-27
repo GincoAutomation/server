@@ -14,13 +14,13 @@ app.use(cookieParser());
 
 // serve build of ui project at root
 const uiPath = path.resolve(path.resolve(__dirname, '../../ui'));
-app.use(express.static(path.resolve(uiPath, './build'))); 
+app.use(express.static(path.resolve(uiPath, './build')));
 
 // API routing
 app.use('/API', APIRouter);
 
 // all other paths will return the ui app, routing is done by the frontend SPA ui
-app.get('/*', function (req, res) {
+app.get('/*', function(req, res) {
   res.sendFile(path.resolve(uiPath, './build/index.html'));
 });
 

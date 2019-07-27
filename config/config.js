@@ -1,4 +1,3 @@
-
 const serverConfig = {
   version: '0.1.0',
 
@@ -10,6 +9,6 @@ const serverConfig = {
     url: 'mongodb://localhost:27017',
     name: 'home'
   }
-}
+};
 
 module.exports = serverConfig;

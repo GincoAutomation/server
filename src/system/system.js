@@ -1,15 +1,15 @@
 let Hardware;
 try {
   Hardware = require('./hardware');
-} catch(err) {
-  Hardware = require('./hardwareMock')
-  console.log("No hardware found, starting with mock hardware");
+} catch (err) {
+  Hardware = require('./hardwareMock');
+  console.log('No hardware found, starting with mock hardware');
 }
 
 class System {
-  constructor(){
+  constructor() {
     this.hardware = new Hardware();
-    
+
     // get initial state from hardware
     this.state = {
       buttons: {
@@ -20,72 +20,74 @@ class System {
       lights: {
         Blue: this.hardware.getState('Blue'),
         Green: this.hardware.getState('Green'),
-        Yellow: this.hardware.getState('Yellow'),     
+        Yellow: this.hardware.getState('Yellow')
       }
-    }
+    };
 
     // update internal state when hardware changes
-    this.hardware.on('light', (id, value) => this._changeState('lights', id, value))
+    this.hardware.on('light', (id, value) => this._changeState('lights', id, value));
     this.hardware.on('button', (id, value) => this._changeState('buttons', id, value));
 
-
     this.hardware.on('button', (id, value) => {
-      if (value == 0) { // if button is released: toggle light
+      if (value == 0) {
+        // if button is released: toggle light
         this.handleEvent({
           type: 'buttonClicked',
           id
-        })
+        });
       }
-    })
-    
+    });
+
     this.eventListeners = {};
   }
 
-  getState(){
+  getState() {
     return this.state;
   }
 
-  handleEvent(event){
-    console.log(event)
+  handleEvent(event) {
+    console.log(event);
     // system logic
-    if (event.type == 'buttonClicked'){
+    if (event.type == 'buttonClicked') {
       const buttonToLightMap = {
         Button1: 'Blue',
         Button2: 'Green',
         Button3: 'Yellow'
-      }
+      };
       const lightId = buttonToLightMap[event.id];
       this.hardware.setLight(lightId, !this.state.lights[lightId]);
     }
   }
 
-  on(eventType, fn){
+  on(eventType, fn) {
     if (!this.eventListeners[eventType]) this.eventListeners[eventType] = [];
     this.eventListeners[eventType].push(fn);
   }
 
-  _changeState(path, id, value){
+  _changeState(path, id, value) {
     const oldValue = this.state[path][id];
     this.state[path][id] = value;
-    this._fireEvent('event', { 
+    this._fireEvent('event', {
       type: 'stateChange',
-      path, id, oldValue, value 
-    })
+      path,
+      id,
+      oldValue,
+      value
+    });
   }
 
-  _fireEvent(eventType, ...args){
-    if (this.eventListeners[eventType]){
-      this.eventListeners[eventType].forEach(fn => fn(...args))
+  _fireEvent(eventType, ...args) {
+    if (this.eventListeners[eventType]) {
+      this.eventListeners[eventType].forEach(fn => fn(...args));
     }
   }
-  
 }
 
 console.log('Start Home Automation system');
 const system = new System();
 
 process.on('SIGINT', () => {
-  console.log("Shut down home automation system");
+  console.log('Shut down home automation system');
   if (system.hardware) system.hardware.shutdown();
   process.exit();
 });

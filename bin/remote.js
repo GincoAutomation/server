@@ -5,13 +5,12 @@ const npmCommand = process.argv[2];
 
 // 1) using spawn
 const { spawn } = require('child_process');
-const cmd = spawn(`ssh -t ${config.user}@${config.hostName} "cd ~/HomeAutomation/server && npm run ${npmCommand}"`, {
+spawn(`ssh -t ${config.user}@${config.hostName} "cd ~/HomeAutomation/server && npm run ${npmCommand}"`, {
   stdio: 'inherit',
   shell: true
 });
 
-
-// 2) using 
+// 2) using
 // const SSH2Promise = require('ssh2-promise');
 
 // var ssh = new SSH2Promise({
@@ -40,4 +39,3 @@ const cmd = spawn(`ssh -t ${config.user}@${config.hostName} "cd ~/HomeAutomation
 //     socket.write('\x03');
 //   });
 // })();
-
