@@ -1,7 +1,7 @@
 let Hardware;
 try {
   Hardware = require('./hardware');
-} catch {
+} catch(err) {
   Hardware = require('./hardwareMock')
   console.log("No hardware found, starting with mock hardware");
 }

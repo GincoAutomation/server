@@ -6,11 +6,11 @@ const ws = require('../websocket');
 const system = require('../system/system');
 
 // via API:
-router.get('/state', function(req, res, next) {
+router.get('/state', function(req, res) {
   res.json(system.getState());
 });
 
-router.post('/event', function(req, res, next) {
+router.post('/event', function(req, res) {
   system.handleEvent(req.body);
   res.json(system.getState());
 });
@@ -21,7 +21,7 @@ ws.subscribe((message) => {
   let event;
   try {
     event = JSON.parse(message);
-  } catch {
+  } catch(err) {
     console.log("ws received message is not a json")
   }
   if (event) system.handleEvent(event);

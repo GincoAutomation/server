@@ -1,6 +1,6 @@
 const Gpio = require('onoff').Gpio;
 
-const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+// const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 class Hardware {
   constructor(){
