@@ -1,5 +1,6 @@
 const Gpio = require('onoff').Gpio;
-
+// eslint-disable-next-line no-unused-vars
+const testpin = new Gpio(1, 'in'); // test if we are running on rPi
 // const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 class Hardware {
