@@ -1,0 +1,105 @@
+[
+{
+  "id":"frontDoor.switch1",
+  "canAdress": "N/A",
+  "port": 123,
+  "type":"SWITCH",
+  "state": {
+    "pressed": false
+  }
+
+},
+{
+  "id":"kitchen.switch1",
+  "canAdress": "N/A",
+  "port": 123,
+  "type":"SWITCH",
+  "state":  {
+    "pressed": false
+  }
+
+},
+{
+  "id":"livingRoom.switch1",
+  "canAdress": "N/A",
+  "port": 123,
+  "type":"SWITCH",
+  "state": {
+    "pressed": false
+  }
+
+},
+{
+  "id":"livingRoom.switch2",
+  "canAdress": "N/A",
+  "port": 123,
+  "type":"SWITCH",
+  "state": {
+    "pressed": false
+  }
+
+},
+{
+  "id":"bedroom.switch1",
+  "canAdress": "N/A",
+  "port": 123,
+  "type":"SWITCH",
+  "state": {
+    "pressed": false
+  }
+
+},
+{
+  "id":"bedroom.switch2",
+  "canAdress": "N/A",
+  "port": 123,
+  "type":"SWITCH",
+  "state": {
+    "pressed": false
+  }
+
+},
+{
+  "id":"kitchen.main",
+  "canAdress": "N/A",
+  "port": 123,
+  "type":"LIGHT",
+  "state": {
+    "value": 0
+  }
+
+},
+{
+  "id":"living.main",
+  "canAdress": "N/A",
+  "port": 123,
+  "type":"LIGHT",
+  "state": {
+    "value": 0
+  }
+
+},
+{
+  "id":"bedroom.main",
+  "canAdress": "N/A",
+  "port": 123,
+  "type":"LIGHT",
+  "state": {
+    "value": 0
+  }
+
+},
+{
+  "id":"bedroom.moodLightning",
+  "canAdress": "N/A",
+  "port": 123,
+  "type":"LIGHT",
+  "state": {
+    "value": 0
+  }
+  
+}
+]
+
+
+

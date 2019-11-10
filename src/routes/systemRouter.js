@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const ws = require('../websocket');
-const testHome= require('../../config/testHome');
+const testHome = require('../../config/testHome');
 
 // Create interface to the system
 const system = require('../system/system');
@@ -12,11 +12,16 @@ router.get('/state', function(req, res) {
 });
 
 //Get home configuration
-router.get('/homeconfig', function(req, res, next) {
-  res.json(JSON.stringify(testHome));
+router.get('/homeconfig', function(req, res) {
+  res.json(require('../../data/UIConfig'));
 });
 
-router.post('/event', function(req, res, next) {
+//Get IOModules
+router.get('/uiState', function(req, res) {
+  res.json(require('../../data/UIState'));
+});
+
+router.post('/event', function(req, res) {
   system.handleEvent(req.body);
   res.json(system.getState());
 });

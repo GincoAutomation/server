@@ -1,0 +1,151 @@
+{
+  "rooms":[
+    {
+      "name": "Living",
+      "inputs": [
+        {
+          "id":"living.toggle1",
+          "type":"toggle",
+          "name":"Verlichting"
+        },
+        {
+          "id":"living.toggle2",
+          "type":"toggle",
+          "name":"Verluchting"
+        },
+        {
+          "id":"living.slider1",
+          "type":"slider",
+          "name":"Temperatuur",
+          "min":8,
+          "max":45
+        }
+      ]
+    },
+    {
+      "name": "Keuken",
+      "inputs": [
+        {
+          "id":"kitchen.toggle1",
+          "type":"toggle",
+          "name":"Verlichting"
+        },
+        {
+          "id":"kitchen.toggle2",
+          "type":"toggle",
+          "name":"Verluchting"
+        },
+        {
+          "id":"kitchen.slider1",
+          "type":"slider",
+          "name":"Temperatuur"
+        }
+      ]
+    },
+    {
+      "name": "Slaapkamer",
+      "inputs": [
+        {
+          "id":"bedroom.toggle1",
+          "type":"toggle",
+          "name":"Verlichting"
+        },
+        {
+          "id":"bedroom.toggle2",
+          "type":"toggle",
+          "name":"Verluchting"
+        },
+        {
+          "id":"bedroom.slider1",
+          "type":"slider",
+          "name":"Temperatuur"
+        }
+      ]
+    }
+  ],
+  "devices":[
+    {
+      "name": "Staande lamp",
+      "room": "Living",
+      "inputs": [
+        {
+          "id":"living.floorlamp1",
+          "type":"toggle",
+          "name":"Leeslamp"
+        },
+        {
+          "id":"living.floorlamp2",
+          "type":"toggle",
+          "name":"Hoofdlamp"
+        }
+      ]
+    },
+    {
+      "name": "Hoofd lamp",
+      "room": "Living",
+      "inputs": [
+        {
+          "id":"living.mainLight",
+          "type":"toggle",
+          "name":"Lamp"
+        }
+      ]
+    },
+    {
+      "name": "Hoofd lamp",
+      "room": "Keuken",
+      "inputs": [
+        {
+          "id":"kitchen.mainLight",
+          "type":"toggle",
+          "name":"Lamp"
+        }
+      ]
+    },
+    {
+      "name": "Hoofd lamp",
+      "room": "Slaapkamer",
+      "inputs": [
+        {
+          "id":"bedroom.mainLight",
+          "type":"toggle",
+          "name":"Lamp"
+        }
+      ]
+    },
+    {
+      "name": "Nacht lampjes",
+      "room": "Slaapkamer",
+      "inputs": [
+        {
+          "id":"bedroom.moodLight",
+          "type":"toggle",
+          "name":"Lamp"
+        },
+        {
+          "id":"bedroom.mood.brightnesSlider",
+          "type":"slider",
+          "name":"Helderheid"
+        }
+      ]
+    }
+    
+  ],
+  "actions":[
+    {
+      "id":"actions.movie",
+      "name":"Film",
+      "description": "Film kijken"
+    },
+    {
+      "id":"actions.leave",
+      "name":"Verlaten",
+      "description": "Huis verlaten"
+    },
+    {
+      "id":"actions.sleep",
+      "name":"Slapen",
+      "description": "Gaan slapen"
+    }
+  ]
+}

@@ -13,8 +13,16 @@ Multiple devices can be connected to the same CAN module.
 Every device has a representationn in the `IODevices.json' config file on the server with the following properties:
 ```
 {
-  id // uuid v4 serial number
-  type // type of device, oneof ['switch', 'light', 'temperature']
+  id // unique human readable id 
+  adress: { // depending on protocol device uses 
+    // for CAN module :
+    canAdress // Adress of the CAN module
+    port //used port
+    // for LAN module :
+    IPadress // IP adress of the module
+    ...
+    } 
+  type // type of device, oneof ['switch', 'light', 'temperature',...]
   state: { // current state of the device, properties will depend on the type
     // for switch:
     pressed // boolean to represent if the switch is pressed / activated or not
@@ -26,17 +34,20 @@ Every device has a representationn in the `IODevices.json' config file on the se
 ```
 
 ## Events:
-An event is a message send on the bus (both CAN bus as well websockets to all clients) that something has happened. E.g. the state of a device has changed. 
+An event is a message send (broadcast) on the bus (both CAN bus as well websockets to all clients) that something has happened. E.g. the state of a device has changed. 
 An event message contains the following properties:
 ```
 {
-  type // oneof ['stateChange']
+  type // oneof ['stateChange', uiInput]
   time // UTC timestamp when the event took place
   data { // depending on the type of event
     // for stateChange
     deviceId // id of the device that changed state
     oldState // previous state object
     state // new state object
+    // for UI
+    client // client who fired the event
+
   }
 }
 ```
@@ -92,12 +103,10 @@ configuration of how the ui looks like: i.e. what boards exists, which devices a
           data:{
             // for devices
             deviceId // Id of the device that is represented
-            type // type of the device oneof ['light', 'switch',...]
-            actionOnClick // action that should be fired when clicking on the device
+            uiType // type of the device oneof ['light', 'switch',...]
 
             // for input
             type // type of input: oneof ['switch', 'slider']
-            actionOnClick // action that should be fired when clicking on the input field, question: maybe this should also fire an event instead of an action...
           }
         }
       ]
