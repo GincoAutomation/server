@@ -10,7 +10,7 @@ Examples:
 - door lock
 
 Multiple devices can be connected to the same CAN module.
-Every device has a representationn in the `IODevices.json' config file on the server with the following properties:
+Every device has a representationn in the `IOModules.json' config file on the server with the following properties:
 ```
 {
   id // unique human readable id 
@@ -32,6 +32,7 @@ Every device has a representationn in the `IODevices.json' config file on the se
   } 
 }
 ```
+State of all the devices will be kept in the system as a state object so that a state change doesnt have to result in a read write cycle to a file.
 
 ## Events:
 An event is a message send (broadcast) on the bus (both CAN bus as well websockets to all clients) that something has happened. E.g. the state of a device has changed. 
@@ -68,9 +69,10 @@ An action message contains the following properties:
 
 # Configurations
 A couple of configurations are stored on the server
-- IOdevices.json: list of existing devices on CAN bus or LAN: mainly discovered automatically
-- configuration.json: organisation of the devices within the home (mainly configured manually)
-- uiConfig.json: configuration of the (web) user interface
+- IOModules.json: list of existing devices on CAN bus or LAN: mainly discovered automatically
+- configuration.json: organisation of the devices within the home (mainly configured manually) (might delete later)
+- UIConfig.json: configuration of the (web) user interface interpretable by the ui to build the required cards
+- UIState: (temporary) Keeps the state of the web UI 
 - logic.js: the automation logic: what should happen when
 
 ## configuration
@@ -90,28 +92,48 @@ How devices are organised within the home and how they are named
 }
 ```
 
-## ui config 
-configuration of how the ui looks like: i.e. what boards exists, which devices are represented, which input devices exist and what actions do they fire
+## UI config 
+configuration of how the ui looks like. Exists of 3 arrays of objects:
+- Rooms: an array with the rooms which the building consists of 
+- Devices: All the controlable devices in the building
+- Actions
+
+Note: UI items get different id's than the physical 'devices' mentioned above. UI cannot access the devices directly, the server controls actions that should be send to the devices as a result of ui interactions.
+
+In short: UI cannot fire actions, only events.
 ```
 {
-  tabs:[ // list of tabs
+  rooms:[
     {
-      name // name of tab
-      tiles: [
+      name //name of the room (how it will be presented on the UI)
+      inputs [  //array of inputs you want in this room e.g. temperature, all lights in this room
         {
-          type // oneof ['device', 'input']
-          data:{
-            // for devices
-            deviceId // Id of the device that is represented
-            uiType // type of the device oneof ['light', 'switch',...]
-
-            // for input
-            type // type of input: oneof ['switch', 'slider']
-          }
+          id //unique id of the input (this id is only used by the UI)
+          type // type of input e.g. slider, toggle, button,...
+          name // name of the input (how it will be presented on the UI)
         }
       ]
     }
   ]
+  devices:[
+    {
+      name //name of the device (how it will be presented on the UI)
+      room //name of the room it exists in
+      inputs [ // array of inputs linked to the device same syntax as room inputs
+        id //unique id of this particular input, not the id of the device it controls
+        type
+        name
+      ]
+    }
+  ]
+  actions: [
+    {
+      id // unique id of this action
+      name // name of this action as it will be presented on the UI
+      description // furter explanation of the action, also mentioned on the UI
+    }
+  ]
+
 }
 ```
 
@@ -119,3 +141,5 @@ configuration of how the ui looks like: i.e. what boards exists, which devices a
 This defines the logic on what should happen when something happens
 It is a javascript file with a function that takes 1 argument: the event that just happened, it can return one or more actions that needs to be fired
 The function can access and use the entire state to depend the action on.
+
+
