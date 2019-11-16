@@ -1,50 +1,56 @@
 {
-  "living.toggle1":{
+  "living_toggle1":{
     "checked":false
   },
-  "living.toggle2":{
+  "living_toggle2":{
     "checked":true
   },
-  "living.slider1":{
+  "living_slider1":{
     "value":21
   },
-  "kitchen.toggle1":{
+  "kitchen_toggle1":{
     "checked":true
   },
-  "kitchen.toggle2":{
+  "kitchen_toggle2":{
     "checked":true
   },
-  "kitchen.slider1":{
+  "kitchen_slider1":{
     "value":23
   },
-  "bedroom.toggle1":{
+  "bedroom_toggle1":{
     "checked":true
   },
-  "bedroom.toggle2":{
+  "bedroom_toggle2":{
     "checked":true
   },
-  "bedroom.slider1":{
+  "bedroom_slider1":{
     "value":21
   },
-  "living.floorlamp1":{
-    "checked":true
+  "lamp01":{
+    "checked":false
   },
-  "living.floorlamp2":{
-    "checked":true
+  "lamp02":{
+    "checked":false
   },
-  "living.mainLight":{
-    "checked":true
+  "lamp03":{
+    "checked":false
   },
-  "kitchen.mainLight":{
-    "checked":true
+  "lamp04":{
+    "checked":false
   },
-  "bedroom.mainLight":{
-    "checked":true
+  "lamp05":{
+    "checked":false
   },
-  "bedroom.moodLight":{
-    "checked":true
+  "lamp06":{
+    "checked":false
   },
-  "bedroom.mood.brightnesSlider":{
-    "value":0.5
+  "lamp07":{
+    "checked":false
+  },
+  "lamp08":{
+    "checked":false
   }
+
 }
+
+

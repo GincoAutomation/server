@@ -59,8 +59,10 @@
   }
 
 },
+
+
 {
-  "id":"kitchen.main",
+  "id":"light_out01",
   "canAdress": "N/A",
   "port": 123,
   "type":"LIGHT",
@@ -68,9 +70,8 @@
     "value": 0
   }
 
-},
-{
-  "id":"living.main",
+},{
+  "id":"light_out02",
   "canAdress": "N/A",
   "port": 123,
   "type":"LIGHT",
@@ -78,9 +79,8 @@
     "value": 0
   }
 
-},
-{
-  "id":"bedroom.main",
+},{
+  "id":"light_out03",
   "canAdress": "N/A",
   "port": 123,
   "type":"LIGHT",
@@ -88,16 +88,51 @@
     "value": 0
   }
 
-},
-{
-  "id":"bedroom.moodLightning",
+},{
+  "id":"light_out04",
   "canAdress": "N/A",
   "port": 123,
   "type":"LIGHT",
   "state": {
     "value": 0
   }
-  
+
+},{
+  "id":"light_out05",
+  "canAdress": "N/A",
+  "port": 123,
+  "type":"LIGHT",
+  "state": {
+    "value": 0
+  }
+
+},{
+  "id":"light_out06",
+  "canAdress": "N/A",
+  "port": 123,
+  "type":"LIGHT",
+  "state": {
+    "value": 0
+  }
+
+},{
+  "id":"light_out07",
+  "canAdress": "N/A",
+  "port": 123,
+  "type":"LIGHT",
+  "state": {
+    "value": 0
+  }
+},
+{
+  "id":"light_out08",
+  "canAdress": "N/A",
+  "port": 123,
+  "type":"LIGHT",
+  "state": {
+    "value": 0
+  }
+
 }
 ]
 

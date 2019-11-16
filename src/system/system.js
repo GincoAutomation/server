@@ -1,3 +1,4 @@
+const sytemLogic = require('../../data/logic');
 let Hardware;
 try {
   Hardware = require('./hardware');
@@ -10,33 +11,22 @@ class System {
   constructor() {
     this.hardware = new Hardware();
 
-    // get initial state from hardware
-    this.state = {
-      buttons: {
-        Button1: this.hardware.getState('Button1'),
-        Button2: this.hardware.getState('Button1'),
-        Button3: this.hardware.getState('Button1')
-      },
-      lights: {
-        Blue: this.hardware.getState('Blue'),
-        Green: this.hardware.getState('Green'),
-        Yellow: this.hardware.getState('Yellow')
-      }
-    };
+    // get initial state from UIState
+    this.state = require('../../data/UIState');
 
     // update internal state when hardware changes
-    this.hardware.on('light', (id, value) => this._changeState('lights', id, value));
-    this.hardware.on('button', (id, value) => this._changeState('buttons', id, value));
+    // this.hardware.on('light', (id, value) => this._changeState('lights', id, value));
+    // this.hardware.on('button', (id, value) => this._changeState('buttons', id, value));
 
-    this.hardware.on('button', (id, value) => {
-      if (value == 0) {
-        // if button is released: toggle light
-        this.handleEvent({
-          type: 'buttonClicked',
-          id
-        });
-      }
-    });
+    // this.hardware.on('button', (id, value) => {
+    //   if (value == 0) {
+    //     // if button is released: toggle light
+    //     this.handleEvent({
+    //       type: 'buttonClicked',
+    //       id
+    //     });
+    //   }
+    // });
 
     this.eventListeners = {};
   }
@@ -48,15 +38,20 @@ class System {
   handleEvent(event) {
     console.log(event);
     // system logic
-    if (event.type == 'buttonClicked') {
-      const buttonToLightMap = {
-        Button1: 'Blue',
-        Button2: 'Green',
-        Button3: 'Yellow'
-      };
-      const lightId = buttonToLightMap[event.id];
-      this.hardware.setLight(lightId, !this.state.lights[lightId]);
-    }
+    // systemLogic(event).map(action =>{
+    // })
+
+    this._changeState(event.data.uiID, event.data.state, event.data.type);
+
+    // if (event.type == 'buttonClicked') {
+    //   const buttonToLightMap = {
+    //     Button1: 'Blue',
+    //     Button2: 'Green',
+    //     Button3: 'Yellow'
+    //   };
+    //   const lightId = buttonToLightMap[event.id];
+    //   this.hardware.setLight(lightId, !this.state.lights[lightId]);
+    // }
   }
 
   on(eventType, fn) {
@@ -64,16 +59,13 @@ class System {
     this.eventListeners[eventType].push(fn);
   }
 
-  _changeState(path, id, value) {
-    const oldValue = this.state[path][id];
-    this.state[path][id] = value;
-    this._fireEvent('event', {
-      type: 'stateChange',
-      path,
-      id,
-      oldValue,
-      value
-    });
+  _changeState(id, value, type) {
+    if (type == 'toggle') {
+      this.state[id].checked = value;
+    } else if (type == 'slider') {
+      this.state[id].value = value;
+    }
+    this._fireEvent('stateChange', this.state);
   }
 
   _fireEvent(eventType, ...args) {

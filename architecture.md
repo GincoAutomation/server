@@ -40,10 +40,11 @@ An event message contains the following properties:
 ```
 {
   type // oneof ['stateChange', uiInput]
-  time // UTC timestamp when the event took place
+  time // epoch timestamp when the event took place
   data { // depending on the type of event
     // for stateChange
     deviceId // id of the device that changed state
+    type // toggle or slider or...
     oldState // previous state object
     state // new state object
     // for UI
@@ -139,7 +140,7 @@ In short: UI cannot fire actions, only events.
 
 ## logic
 This defines the logic on what should happen when something happens
-It is a javascript file with a function that takes 1 argument: the event that just happened, it can return one or more actions that needs to be fired
+It is a javascript file with a function that takes 1 argument: the event that just happened, it can return one or more actions that needs to be fired (array)
 The function can access and use the entire state to depend the action on.
 
 

@@ -38,6 +38,6 @@ ws.subscribe(message => {
   if (event) system.handleEvent(event);
 });
 
-system.on('event', event => ws.broadcast(JSON.stringify(event)));
+system.on('stateChange', state => ws.broadcast(JSON.stringify(state)));
 
 module.exports = router;
