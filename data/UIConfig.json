@@ -4,17 +4,17 @@
       "name": "Living",
       "inputs": [
         {
-          "id":"living.toggle1",
+          "id":"living_toggle1",
           "type":"toggle",
           "name":"Verlichting"
         },
         {
-          "id":"living.toggle2",
+          "id":"living_toggle2",
           "type":"toggle",
           "name":"Verluchting"
         },
         {
-          "id":"living.slider1",
+          "id":"living_slider1",
           "type":"slider",
           "name":"Temperatuur",
           "min":8,
@@ -26,17 +26,17 @@
       "name": "Keuken",
       "inputs": [
         {
-          "id":"kitchen.toggle1",
+          "id":"kitchen_toggle1",
           "type":"toggle",
           "name":"Verlichting"
         },
         {
-          "id":"kitchen.toggle2",
+          "id":"kitchen_toggle2",
           "type":"toggle",
           "name":"Verluchting"
         },
         {
-          "id":"kitchen.slider1",
+          "id":"kitchen_slider1",
           "type":"slider",
           "name":"Temperatuur"
         }
@@ -46,17 +46,17 @@
       "name": "Slaapkamer",
       "inputs": [
         {
-          "id":"bedroom.toggle1",
+          "id":"bedroom_toggle1",
           "type":"toggle",
           "name":"Verlichting"
         },
         {
-          "id":"bedroom.toggle2",
+          "id":"bedroom_toggle2",
           "type":"toggle",
           "name":"Verluchting"
         },
         {
-          "id":"bedroom.slider1",
+          "id":"bedroom_slider1",
           "type":"slider",
           "name":"Temperatuur"
         }
@@ -65,85 +65,109 @@
   ],
   "devices":[
     {
-      "name": "Staande lamp",
-      "room": "Living",
+      "name": "Lamp 1",
+      "room": "N/A",
+      "type": "ceiling_lamp",
       "inputs": [
         {
-          "id":"living.floorlamp1",
-          "type":"toggle",
-          "name":"Leeslamp"
-        },
-        {
-          "id":"living.floorlamp2",
-          "type":"toggle",
-          "name":"Hoofdlamp"
-        }
-      ]
-    },
-    {
-      "name": "Hoofd lamp",
-      "room": "Living",
-      "inputs": [
-        {
-          "id":"living.mainLight",
+          "id":"lamp01",
           "type":"toggle",
           "name":"Lamp"
         }
       ]
     },
     {
-      "name": "Hoofd lamp",
-      "room": "Keuken",
+      "name": "Lamp 2",
+      "room": "N/A",
+      "type": "ceiling_lamp",
       "inputs": [
         {
-          "id":"kitchen.mainLight",
+          "id":"lamp02",
           "type":"toggle",
           "name":"Lamp"
         }
       ]
-    },
-    {
-      "name": "Hoofd lamp",
-      "room": "Slaapkamer",
+    },{
+      "name": "Lamp 3",
+      "room": "N/A",
+      "type": "ceiling_lamp",
       "inputs": [
         {
-          "id":"bedroom.mainLight",
+          "id":"lamp03",
           "type":"toggle",
           "name":"Lamp"
         }
       ]
-    },
-    {
-      "name": "Nacht lampjes",
-      "room": "Slaapkamer",
+    },{
+      "name": "Lamp 4",
+      "room": "N/A",
+      "type": "ceiling_lamp",
       "inputs": [
         {
-          "id":"bedroom.moodLight",
+          "id":"lamp04",
           "type":"toggle",
           "name":"Lamp"
-        },
+        }
+      ]
+    },{
+      "name": "Lamp 5",
+      "room": "N/A",
+      "type": "ceiling_lamp",
+      "inputs": [
         {
-          "id":"bedroom.mood.brightnesSlider",
-          "type":"slider",
-          "name":"Helderheid"
+          "id":"lamp05",
+          "type":"toggle",
+          "name":"Lamp"
+        }
+      ]
+    },{
+      "name": "Lamp 6",
+      "room": "N/A",
+      "type": "ceiling_lamp",
+      "inputs": [
+        {
+          "id":"lamp06",
+          "type":"toggle",
+          "name":"Lamp"
+        }
+      ]
+    },{
+      "name": "Lamp 7",
+      "room": "N/A",
+      "type": "ceiling_lamp",
+      "inputs": [
+        {
+          "id":"lamp07",
+          "type":"toggle",
+          "name":"Lamp"
+        }
+      ]
+    },{
+      "name": "Lamp 8",
+      "room": "N/A",
+      "type": "ceiling_lamp",
+      "inputs": [
+        {
+          "id":"lamp08",
+          "type":"toggle",
+          "name":"Lamp"
         }
       ]
     }
-    
   ],
   "actions":[
     {
-      "id":"actions.movie",
+      "id":"actions_movie",
       "name":"Film",
       "description": "Film kijken"
     },
     {
-      "id":"actions.leave",
+      "id":"actions_leave",
       "name":"Verlaten",
       "description": "Huis verlaten"
     },
     {
-      "id":"actions.sleep",
+      "id":"actions_sleep",
       "name":"Slapen",
       "description": "Gaan slapen"
     }
