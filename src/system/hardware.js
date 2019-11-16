@@ -8,16 +8,44 @@ class Hardware {
     this.type = 'Raspberry pi';
 
     this.buttons = {
-      Button1: new Gpio(2, 'in', 'both', {
-        debounceTimeout: 10,
+      button1: new Gpio(3, 'in', 'both', {
+        debounceTimeout: 100,
         activeLow: true
       }), // GPIO 0-8 has internal pull-ups enabled by defualt
-      Button2: new Gpio(3, 'in', 'both', {
-        debounceTimeout: 10,
+      button2: new Gpio(4, 'in', 'both', {
+        debounceTimeout: 100,
         activeLow: true
       }),
-      Button3: new Gpio(4, 'in', 'both', {
-        debounceTimeout: 10,
+      button3: new Gpio(17, 'in', 'both', {
+        debounceTimeout: 100,
+        activeLow: true
+      }),
+      button4: new Gpio(27, 'in', 'both', {
+        debounceTimeout: 100,
+        activeLow: true
+      }),
+      button5: new Gpio(0, 'in', 'both', {
+        debounceTimeout: 100,
+        activeLow: true
+      }),
+      button6: new Gpio(5, 'in', 'both', {
+        debounceTimeout: 100,
+        activeLow: true
+      }),
+      button7: new Gpio(6, 'in', 'both', {
+        debounceTimeout: 100,
+        activeLow: true
+      }),
+      button8: new Gpio(13, 'in', 'both', {
+        debounceTimeout: 100,
+        activeLow: true
+      }),
+      buttonBlue: new Gpio(19, 'in', 'both', {
+        debounceTimeout: 100,
+        activeLow: true
+      }),
+      buttonRed: new Gpio(26, 'in', 'both', {
+        debounceTimeout: 100,
         activeLow: true
       })
     };
@@ -32,9 +60,14 @@ class Hardware {
     });
 
     this.lights = {
-      Blue: new Gpio(17, 'out'),
-      Green: new Gpio(27, 'out'),
-      Yellow: new Gpio(22, 'out')
+      light1: new Gpio(14, 'low'),
+      light2: new Gpio(15, 'low'),
+      light3: new Gpio(18, 'low'),
+      light4: new Gpio(23, 'low'),
+      light5: new Gpio(24, 'low'),
+      light6: new Gpio(16, 'low'),
+      light7: new Gpio(20, 'low'),
+      light8: new Gpio(21, 'low'),
     };
 
     this.eventListeners = {};
@@ -56,7 +89,7 @@ class Hardware {
   getState(id) {
     if (this.buttons[id]) return this.buttons[id].readSync();
     if (this.lights[id]) return this.lights[id].readSync();
-    console.error(`No devive fount with id ${id}`);
+    console.error(`No device found with id ${id}`);
   }
 
   on(eventType, fn) {

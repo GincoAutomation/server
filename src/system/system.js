@@ -13,14 +13,26 @@ class System {
     // get initial state from hardware
     this.state = {
       buttons: {
-        Button1: this.hardware.getState('Button1'),
-        Button2: this.hardware.getState('Button1'),
-        Button3: this.hardware.getState('Button1')
+        button1: this.hardware.getState('button1'),
+        button2: this.hardware.getState('button2'),
+        button3: this.hardware.getState('button3'),
+        button4: this.hardware.getState('button4'),
+        button5: this.hardware.getState('button5'),
+        button6: this.hardware.getState('button6'),
+        button7: this.hardware.getState('button7'),
+        button8: this.hardware.getState('button8'),
+        buttonBlue: this.hardware.getState('buttonBlue'),
+        buttonRed: this.hardware.getState('buttonRed'),
       },
       lights: {
-        Blue: this.hardware.getState('Blue'),
-        Green: this.hardware.getState('Green'),
-        Yellow: this.hardware.getState('Yellow')
+        light1: this.hardware.getState('light1'),
+        light2: this.hardware.getState('light2'),
+        light3: this.hardware.getState('light3'),
+        light4: this.hardware.getState('light4'),
+        light5: this.hardware.getState('light5'),
+        light6: this.hardware.getState('light6'),
+        light7: this.hardware.getState('light7'),
+        light8: this.hardware.getState('light8'),
       }
     };
 
@@ -50,9 +62,14 @@ class System {
     // system logic
     if (event.type == 'buttonClicked') {
       const buttonToLightMap = {
-        Button1: 'Blue',
-        Button2: 'Green',
-        Button3: 'Yellow'
+        button1: 'light1',
+        button2: 'light2',
+        button3: 'light3',
+        button4: 'light4',
+        button5: 'light5',
+        button6: 'light6',
+        button7: 'light7',
+        button8: 'light8'
       };
       const lightId = buttonToLightMap[event.id];
       this.hardware.setLight(lightId, !this.state.lights[lightId]);
