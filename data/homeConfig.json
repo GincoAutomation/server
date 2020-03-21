@@ -1,0 +1,32 @@
+{
+  "IOModulesNames":{
+    "ef146d11-f350-4db2-a598-9928a8e7724c" : "Verlichting",
+    "319d6ad2-14f8-477d-afea-3cb5c1f977b3" : "Verluchting",
+    "f896b029-d96b-434f-83ed-1dda09a41d95" : "Verlichting",
+    "5a23fe2a-d215-4318-812d-b5268309cef7" : "Verluchting",
+    "81a0f4e6-f74b-4653-8af7-583b88960027" : "Verlichting",
+    "9777ba7f-30c7-4eb4-8809-b56a5ca8be2d" : "Verluchting",
+    "f0be5820-f9d8-42d2-b15b-b7b6d0e27ac4" : "Staande Lamp",
+    "f532f636-3cf3-4103-814f-6233bedc3ff3" : "Nacht Lamp",
+    "fec5e842-82e4-41da-8294-b9ed5b752fda" : "Hoofd Lamp",
+    "f8727edb-04d8-48a8-bc48-4df676bb43f1" : "Hoofd Lamp"
+  },
+  "Location":{
+    "7378b401-7e70-43ac-bc4c-e754e0d89fc5" : {
+      "id":"7378b401-7e70-43ac-bc4c-e754e0d89fc5",
+      "name": "Living",
+      "IOModules": ["ef146d11-f350-4db2-a598-9928a8e7724c","319d6ad2-14f8-477d-afea-3cb5c1f977b3","f8727edb-04d8-48a8-bc48-4df676bb43f1","f0be5820-f9d8-42d2-b15b-b7b6d0e27ac4"]
+    },
+    "e3fde9e3-d003-4236-a710-b22a669b3fff" : {
+      "id":"e3fde9e3-d003-4236-a710-b22a669b3fff",
+      "name": "Keuken",
+      "IOModules": ["f896b029-d96b-434f-83ed-1dda09a41d95","5a23fe2a-d215-4318-812d-b5268309cef7","fec5e842-82e4-41da-8294-b9ed5b752fda"]
+    },
+    "9b99875a-2990-4821-9c6e-d5b3df30c47e" : {
+      "id":"9b99875a-2990-4821-9c6e-d5b3df30c47e",
+      "name": "Slaapkamer",
+      "IOModules": ["81a0f4e6-f74b-4653-8af7-583b88960027","9777ba7f-30c7-4eb4-8809-b56a5ca8be2d","f532f636-3cf3-4103-814f-6233bedc3ff3"]
+    }
+
+  }
+}

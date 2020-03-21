@@ -10,7 +10,8 @@
     "start-db": "mongod --dbpath ./data/db/",
     "buildUi": "cd ../ui && git pull && npm install && npm run build",
     "sync": "node ./bin/sync",
-    "remote": "node ./bin/remote"
+    "remote": "node ./bin/remote",
+    "checkID": "node ./scripts/checkID"
   },
   "repository": {
     "type": "git",

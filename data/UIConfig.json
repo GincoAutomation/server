@@ -1,0 +1,175 @@
+{
+  "rooms":[
+    {
+      "name": "Living",
+      "inputs": [
+        {
+          "id":"living_toggle1",
+          "type":"toggle",
+          "name":"Verlichting"
+        },
+        {
+          "id":"living_toggle2",
+          "type":"toggle",
+          "name":"Verluchting"
+        },
+        {
+          "id":"living_slider1",
+          "type":"slider",
+          "name":"Temperatuur",
+          "min":8,
+          "max":45
+        }
+      ]
+    },
+    {
+      "name": "Keuken",
+      "inputs": [
+        {
+          "id":"kitchen_toggle1",
+          "type":"toggle",
+          "name":"Verlichting"
+        },
+        {
+          "id":"kitchen_toggle2",
+          "type":"toggle",
+          "name":"Verluchting"
+        },
+        {
+          "id":"kitchen_slider1",
+          "type":"slider",
+          "name":"Temperatuur"
+        }
+      ]
+    },
+    {
+      "name": "Slaapkamer",
+      "inputs": [
+        {
+          "id":"bedroom_toggle1",
+          "type":"toggle",
+          "name":"Verlichting"
+        },
+        {
+          "id":"bedroom_toggle2",
+          "type":"toggle",
+          "name":"Verluchting"
+        },
+        {
+          "id":"bedroom_slider1",
+          "type":"slider",
+          "name":"Temperatuur"
+        }
+      ]
+    }
+  ],
+  "devices":[
+    {
+      "name": "Lamp 1",
+      "room": "Trappenhal",
+      "type": "ceiling_lamp",
+      "inputs": [
+        {
+          "id":"lamp01",
+          "type":"toggle",
+          "name":"Lamp"
+        }
+      ]
+    },
+    {
+      "name": "Lamp 2",
+      "room": "Badkamer",
+      "type": "ceiling_lamp",
+      "inputs": [
+        {
+          "id":"lamp02",
+          "type":"toggle",
+          "name":"Lamp"
+        }
+      ]
+    },{
+      "name": "Lamp 3",
+      "room": "Keuken",
+      "type": "ceiling_lamp",
+      "inputs": [
+        {
+          "id":"lamp03",
+          "type":"toggle",
+          "name":"Lamp"
+        }
+      ]
+    },{
+      "name": "Lamp 4",
+      "room": "Living",
+      "type": "ceiling_lamp",
+      "inputs": [
+        {
+          "id":"lamp04",
+          "type":"toggle",
+          "name":"Lamp"
+        }
+      ]
+    },{
+      "name": "Lamp 5",
+      "room": "N/A",
+      "type": "ceiling_lamp",
+      "inputs": [
+        {
+          "id":"lamp05",
+          "type":"toggle",
+          "name":"Lamp"
+        }
+      ]
+    },{
+      "name": "Lamp 6",
+      "room": "N/A",
+      "type": "ceiling_lamp",
+      "inputs": [
+        {
+          "id":"lamp06",
+          "type":"toggle",
+          "name":"Lamp"
+        }
+      ]
+    },{
+      "name": "Lamp 7",
+      "room": "N/A",
+      "type": "ceiling_lamp",
+      "inputs": [
+        {
+          "id":"lamp07",
+          "type":"toggle",
+          "name":"Lamp"
+        }
+      ]
+    },{
+      "name": "Lamp 8",
+      "room": "N/A",
+      "type": "ceiling_lamp",
+      "inputs": [
+        {
+          "id":"lamp08",
+          "type":"toggle",
+          "name":"Lamp"
+        }
+      ]
+    }
+  ],
+  "actions":[
+    {
+      "id":"actions_movie",
+      "name":"Film",
+      "description": "Film kijken"
+    },
+    {
+      "id":"actions_leave",
+      "name":"Verlaten",
+      "description": "Huis verlaten"
+    },
+    {
+      "id":"actions_sleep",
+      "name":"Slapen",
+      "description": "Gaan slapen"
+    }
+  ]
+}
