@@ -1,4 +1,5 @@
 const sytemLogic = require('../../data/logic');
+
 let Hardware;
 try {
   Hardware = require('./hardware');
@@ -37,7 +38,7 @@ class System {
     //   }
     // };
     // get initial state from UIState
-    this.state = require('../../data/UIState');
+    this.UIstate = require('../../data/UIState');
 
     // update internal state when hardware changes
     // this.hardware.on('light', (id, value) => this._changeState('lights', id, value));
@@ -47,7 +48,7 @@ class System {
       if (value == 0) {
         console.log(this.state);
         // if button is released: toggle light
-        var lampID='lamp0'+id.charAt(id.length -1);
+        var lampID = 'lamp0' + id.charAt(id.length - 1);
         this.handleEvent({
           type: 'Input',
           time: 'N/A',
@@ -68,9 +69,29 @@ class System {
   getState() {
     return this.state;
   }
+  handleActions(actions) {
+    //send actions to correct handlers
+    actions.forEach(action => {
+      switch (action.comType) {
+        case 'CAN':
+        //handle in hardware
+        case 'HTTP':
+        //pass action to express
+        case 'WS':
+        //pass action to express
+        default:
+          console.log('communication type not defined');
+      }
+    });
+  }
 
   handleEvent(event) {
     console.log(event);
+    if (event.type == 'stateChange') {
+      this.state;
+    }
+    var actions = sytemLogic(event, this.state);
+
     // system logic
     // if (event.type == 'buttonClicked') {
     //   const buttonToLightMap = {
@@ -89,8 +110,8 @@ class System {
     // systemLogic(event).map(action =>{
     // })
 
-     this._changeState(event.data.uiID, event.data.state, event.data.type);
-     this.hardware.setLight('light' + event.data.uiID.charAt(event.data.uiID.length - 1), event.data.state);
+    this._changeState(event.data.uiID, event.data.state, event.data.type);
+    this.hardware.setLight('light' + event.data.uiID.charAt(event.data.uiID.length - 1), event.data.state);
     // if (event.type == 'buttonClicked') {
     //   const buttonToLightMap = {
     //     Button1: 'Blue',

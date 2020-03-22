@@ -138,9 +138,13 @@ In short: UI cannot fire actions, only events.
 }
 ```
 
-## logic
+## Logic
 This defines the logic on what should happen when something happens
 It is a javascript file with a function that takes 1 argument: the event that just happened, it can return one or more actions that needs to be fired (array)
 The function can access and use the entire state to depend the action on.
+
+##Action Library
+Since specific types of devices all could use the same action e.g. switch light on/of or set brightness it is usefull to make a library for these types of devices
+so you can reuse in logic.js 
 
 
