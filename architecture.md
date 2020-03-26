@@ -147,4 +147,7 @@ The function can access and use the entire state to depend the action on.
 Since specific types of devices all could use the same action e.g. switch light on/of or set brightness it is usefull to make a library for these types of devices
 so you can reuse in logic.js 
 
+## UILogic
+Since UI and device logic isn't always a 1 to 1  mapping, it might be interesting to split these 2 logic files. UIlogic will translate a device event to the correct UIstate to send to the client browser
+
 

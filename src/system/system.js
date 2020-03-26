@@ -38,7 +38,7 @@ class System {
     //   }
     // };
     // get initial state from UIState
-    this.UIstate = require('../../data/UIState');
+    this.UIstate = JSON.parse(require('../../data/UIState'));
 
     // update internal state when hardware changes
     // this.hardware.on('light', (id, value) => this._changeState('lights', id, value));
@@ -74,13 +74,17 @@ class System {
     actions.forEach(action => {
       switch (action.comType) {
         case 'CAN':
-        //handle in hardware
+          //handle in hardware
+          break;
         case 'HTTP':
-        //pass action to express
+          //pass action to express
+          break;
         case 'WS':
-        //pass action to express
+          //pass action to express
+          break;
         default:
           console.log('communication type not defined');
+          break;
       }
     });
   }
@@ -88,7 +92,17 @@ class System {
   handleEvent(event) {
     console.log(event);
     if (event.type == 'stateChange') {
-      this.state;
+      switch (this.state[event.data.deviceId].type) {
+        case 'LIGHT':
+          this.state[event.data.deviceId].state.value = event.data.state;
+          break;
+        case 'SWITCH':
+          this.state[event.data.deviceId].state.pressed = event.data.state;
+          break;
+        default:
+          console.log('device type not recognized');
+          break;
+      }
     }
     var actions = sytemLogic(event, this.state);
 
