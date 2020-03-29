@@ -1,4 +1,7 @@
 {
+  "home_toggle":{
+    "checked":false
+  },
   "living_toggle1":{
     "checked":false
   },

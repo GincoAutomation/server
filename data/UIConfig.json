@@ -65,6 +65,18 @@
   ],
   "devices":[
     {
+      "name": "Alle lichten",
+      "room": "Home",
+      "type": "ceiling_lamp",
+      "inputs": [
+        {
+          "id":"home_toggle",
+          "type":"toggle",
+          "name":"all lights"
+        }
+      ]
+    },
+    {
       "name": "Lamp 1",
       "room": "Trappenhal",
       "type": "ceiling_lamp",

@@ -38,8 +38,9 @@ class System {
     //   }
     // };
     // get initial state from UIState
-    this.UIstate = JSON.parse(require('../../data/UIState'));
-
+    this.UIstate = require('../../data/UIState');
+    this.IOModules = require('../../data/IOModules');
+    this.updateUI = require('../../data/UILogic');
     // update internal state when hardware changes
     // this.hardware.on('light', (id, value) => this._changeState('lights', id, value));
     // this.hardware.on('button', (id, value) => this._changeState('buttons', id, value));
@@ -103,27 +104,10 @@ class System {
           console.log('device type not recognized');
           break;
       }
+      this.updateUI(event, this.UIstate, this.IOModules);
     }
     var actions = sytemLogic(event, this.state);
-
-    // system logic
-    // if (event.type == 'buttonClicked') {
-    //   const buttonToLightMap = {
-    //     button1: 'light1',
-    //     button2: 'light2',
-    //     button3: 'light3',
-    //     button4: 'light4',
-    //     button5: 'light5',
-    //     button6: 'light6',
-    //     button7: 'light7',
-    //     button8: 'light8'
-    //   };
-    //   const lightId = buttonToLightMap[event.id];
-    //   this.hardware.setLight(lightId, !this.state.lights[lightId]);
-    // }
-    // systemLogic(event).map(action =>{
-    // })
-
+    this.handleActions(sytemLogic(event, this.state));
     this._changeState(event.data.uiID, event.data.state, event.data.type);
     this.hardware.setLight('light' + event.data.uiID.charAt(event.data.uiID.length - 1), event.data.state);
     // if (event.type == 'buttonClicked') {
