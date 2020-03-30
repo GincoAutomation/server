@@ -7,7 +7,7 @@ module.exports = function(type, action, deviceID) {
             deviceId: deviceID,
             type: 'LIGHT',
             data: {
-              setState: 'on'
+              value: 1
             }
           };
         case 'OFF':
@@ -15,7 +15,7 @@ module.exports = function(type, action, deviceID) {
             deviceId: deviceID,
             type: 'LIGHT',
             data: {
-              setState: 'off'
+              value: 0
             }
           };
         case 'BRIGHTNESS':

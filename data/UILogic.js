@@ -17,20 +17,20 @@ module.exports = function(event, UIstate, IOModules) {
         UIstate.home_toggle.checked = false;
       }
     },
-    kitchenGroup: () => {
-      //example: check if all kitchen ligts are on
+    livingGroup: () => {
+      //example: check if all living ligts are on
       let dependants = [
         IOModules.light_out01.state.value,
         IOModules.light_out02.state.value,
         IOModules.light_out03.state.value
       ];
       if (dependants.every(v => v == 1)) {
-        UIstate.kitchen_toggle1.checked = true;
+        UIstate.living_toggle1.checked = true;
       } else if (dependants.some(v => v == 0)) {
-        UIstate.kitchen_toggle1.checked = false;
+        UIstate.living_toggle1.checked = false;
       }
     },
-    livingGroup: () => {
+    kitchenGroup: () => {
       //example: check if all kitchen ligts are on
       let dependants = [
         IOModules.light_out04.state.value,
@@ -38,9 +38,9 @@ module.exports = function(event, UIstate, IOModules) {
         IOModules.light_out06.state.value
       ];
       if (dependants.every(v => v == 1)) {
-        UIstate.living_toggle1.checked = true;
+        UIstate.kitchen_toggle1.checked = true;
       } else if (dependants.some(v => v == 0)) {
-        UIstate.living_toggle1.checked = false;
+        UIstate.kitchen_toggle1.checked = false;
       }
     }
   };
@@ -48,61 +48,61 @@ module.exports = function(event, UIstate, IOModules) {
     light_out01: {
       reactors: [
         () => {
-          UIstate.lamp01.checked = event.data.state;
+          UIstate.lamp01.checked = event.data.state == 1 ? true : false;
         },
-        groupFunctions.kitchenGroup,
+        groupFunctions.livingGroup,
         groupFunctions.homeGroup
       ]
     },
     light_out02: {
       reactors: [
         () => {
-          UIstate.lamp02.checked = event.data.state;
+          UIstate.lamp02.checked = event.data.state == 1 ? true : false;
         },
-        groupFunctions.kitchenGroup,
+        groupFunctions.livingGroup,
         groupFunctions.homeGroup
       ]
     },
     light_out03: {
       reactors: [
         () => {
-          UIstate.lamp03.checked = event.data.state;
+          UIstate.lamp03.checked = event.data.state == 1 ? true : false;
         },
-        groupFunctions.kitchenGroup,
+        groupFunctions.livingGroup,
         groupFunctions.homeGroup
       ]
     },
     light_out04: {
       reactors: [
         () => {
-          UIstate.lamp04.checked = event.data.state;
+          UIstate.lamp04.checked = event.data.state == 1 ? true : false;
         },
-        groupFunctions.livingGroup,
+        groupFunctions.kitchenGroup,
         groupFunctions.homeGroup
       ]
     },
     light_out05: {
       reactors: [
         () => {
-          UIstate.lamp05.checked = event.data.state;
+          UIstate.lamp05.checked = event.data.state == 1 ? true : false;
         },
-        groupFunctions.livingGroup,
+        groupFunctions.kitchenGroup,
         groupFunctions.homeGroup
       ]
     },
     light_out06: {
       reactors: [
         () => {
-          UIstate.lamp06.checked = event.data.state;
+          UIstate.lamp06.checked = event.data.state == 1 ? true : false;
         },
-        groupFunctions.livingGroup,
+        groupFunctions.kitchenGroup,
         groupFunctions.homeGroup
       ]
     },
     light_out07: {
       reactors: [
         () => {
-          UIstate.lamp07.checked = event.data.state;
+          UIstate.lamp07.checked = event.data.state == 1 ? true : false;
         },
         groupFunctions.homeGroup
       ]
@@ -110,7 +110,7 @@ module.exports = function(event, UIstate, IOModules) {
     light_out08: {
       reactors: [
         () => {
-          UIstate.lamp08.checked = event.data.state;
+          UIstate.lamp08.checked = event.data.state == 1 ? true : false;
         },
         groupFunctions.homeGroup
       ]

@@ -9,14 +9,43 @@ class Hardware {
     };
 
     this.lights = {
-      Blue: { state: 0 },
-      Green: { state: 0 },
-      Yellow: { state: 0 }
+      light_out01: { state: 0 },
+      light_out02: { state: 0 },
+      light_out03: { state: 0 },
+      light_out04: { state: 0 },
+      light_out05: { state: 0 },
+      light_out06: { state: 0 },
+      light_out07: { state: 0 },
+      light_out08: { state: 0 }
     };
 
     this.eventListeners = {};
   }
 
+  handleCANAction(action) {
+    /* send the data  to can module*/
+  }
+  handleGPIOAction(action) {
+    /* set gpio pins */
+    var prevState = this.lights[action.deviceId].state;
+    console.log(`setting GPIO pin cooresponding with: ${action.deviceId}`);
+    let event = {
+      type: 'stateChange',
+      time: new Date().toISOString(),
+      data: {
+        deviceId: action.deviceId,
+        oldState: prevState,
+        state: action.data.value
+      }
+    };
+    this.passEvent(event);
+  }
+  receiveCANEvent() {
+    /* received can message containing Event */
+  }
+  passEvent(event) {
+    this._fireEvent('triggerEvent', event);
+  }
   shutdown() {}
 
   setLight(id, value) {
