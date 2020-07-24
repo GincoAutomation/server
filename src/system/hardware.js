@@ -8,66 +8,70 @@ class Hardware {
     this.type = 'Raspberry pi';
 
     this.buttons = {
-      button1: new Gpio(3, 'in', 'both', {
+      button1: new Gpio(2, 'in', 'both', {
         debounceTimeout: 100,
         activeLow: true
       }), // GPIO 0-8 has internal pull-ups enabled by defualt
-      button2: new Gpio(4, 'in', 'both', {
+      button2: new Gpio(3, 'in', 'both', {
         debounceTimeout: 100,
         activeLow: true
       }),
-      button3: new Gpio(17, 'in', 'both', {
-        debounceTimeout: 100,
-        activeLow: true
-      }),
-      button4: new Gpio(27, 'in', 'both', {
-        debounceTimeout: 100,
-        activeLow: true
-      }),
-      button5: new Gpio(0, 'in', 'both', {
-        debounceTimeout: 100,
-        activeLow: true
-      }),
-      button6: new Gpio(5, 'in', 'both', {
-        debounceTimeout: 100,
-        activeLow: true
-      }),
-      button7: new Gpio(6, 'in', 'both', {
-        debounceTimeout: 100,
-        activeLow: true
-      }),
-      button8: new Gpio(13, 'in', 'both', {
-        debounceTimeout: 100,
-        activeLow: true
-      }),
-      buttonBlue: new Gpio(19, 'in', 'both', {
-        debounceTimeout: 100,
-        activeLow: true
-      }),
-      buttonRed: new Gpio(26, 'in', 'both', {
+      button3: new Gpio(4, 'in', 'both', {
         debounceTimeout: 100,
         activeLow: true
       })
+      // button4: new Gpio(27, 'in', 'both', {
+      //   debounceTimeout: 100,
+      //   activeLow: true
+      // }),
+      // button5: new Gpio(0, 'in', 'both', {
+      //   debounceTimeout: 100,
+      //   activeLow: true
+      // }),
+      // button6: new Gpio(5, 'in', 'both', {
+      //   debounceTimeout: 100,
+      //   activeLow: true
+      // }),
+      // button7: new Gpio(6, 'in', 'both', {
+      //   debounceTimeout: 100,
+      //   activeLow: true
+      // }),
+      // button8: new Gpio(13, 'in', 'both', {
+      //   debounceTimeout: 100,
+      //   activeLow: true
+      // }),
+      // buttonBlue: new Gpio(19, 'in', 'both', {
+      //   debounceTimeout: 100,
+      //   activeLow: true
+      // }),
+      // buttonRed: new Gpio(26, 'in', 'both', {
+      //   debounceTimeout: 100,
+      //   activeLow: true
+      // })
     };
     Object.entries(this.buttons).forEach(([id, button]) => {
       button.watch((err, value) => {
         if (err) console.error(err);
         else {
           console.log(`Button ${id} ${value ? 'pressed' : 'released'}`);
-          //this._fireEvent('button', id, value);
+          this._fireEvent('button', id, value);
         }
       });
     });
 
     this.lights = {
-      light1: new Gpio(14, 'high'),
-      light2: new Gpio(15, 'high'),
-      light3: new Gpio(18, 'high'),
-      light4: new Gpio(23, 'high'),
-      light5: new Gpio(24, 'high'),
-      light6: new Gpio(16, 'high'),
-      light7: new Gpio(20, 'high'),
-      light8: new Gpio(21, 'high'),
+      Blue: new Gpio(17, 'out'),
+      Green: new Gpio(27, 'out'),
+      Yellow: new Gpio(22, 'out')
+
+      // light1: new Gpio(14, 'high'),
+      // light2: new Gpio(15, 'high'),
+      // light3: new Gio(18, 'high'),
+      // light4: new Gpio(23, 'high'),
+      // light5: new Gpio(24, 'high'),
+      // light6: new Gpio(16, 'high'),
+      // light7: new Gpio(20, 'high'),
+      // light8: new Gpio(21, 'high'),
     };
 
     this.eventListeners = {};
@@ -75,13 +79,13 @@ class Hardware {
 
   shutdown() {
     Object.values(this.buttons).forEach(button => button.unexport());
-    Object.values(this.lights).forEach(light => light.unexport());
+    Object.values(this.lights).frEach(light => light.unexport());
   }
 
   setLight(id, value) {
     if (this.lights[id]) {
       console.log(`Set light ${id} ${value ? 'on' : 'off'}`);
-      this.lights[id].writeSync(value ? 0 : 1); // invert 
+      this.lights[id].writeSync(value ? 1 : 0); // invert
       this._fireEvent('light', id, value ? 1 : 0);
     } else console.error(`Light with id: ${id} does not exist`);
   }
