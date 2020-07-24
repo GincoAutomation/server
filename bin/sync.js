@@ -12,7 +12,7 @@ const sync = new Rsync()
   .compress()
   .flags('v')
   .source(path.join(__dirname, '..') + '/')
-  .exclude(['.*', 'node_modules', 'data'])
+  .exclude(['.*', 'node_modules', 'data/db'])
   .destination(`${config.user}@${config.hostName}:~/HomeAutomation/server`);
 
 // console.log(sync.command())
