@@ -30,8 +30,10 @@
     "mongodb": "^3.2.7",
     "morgan": "~1.9.0",
     "onoff": "^3.2.9",
-    "socketcan": "^2.8.0",
     "ws": "^6.2.1"
+  },
+  "optionalDependencies": {
+    "socketcan": "^2.8.0"
   },
   "devDependencies": {
     "eslint": "^5.16.0",
