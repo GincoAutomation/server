@@ -102,6 +102,18 @@ sudo ip link set can0 up type can bitrate 125000 restart-ms 1000 fd off
 sudo ifconfig can0 txqueuelen 65536
 ```
 
+Or add following to `/etc/network/interfaces`:
+
+```
+auto can0
+iface can0 inet manual
+    pre-up /sbin/ip link set $IFACE type can bitrate 125000 restart-ms 1000 fd off sample-point 0.75
+    post-up /sbin/ifconfig $IFACE txqueuelen 65536
+    up /sbin/ifconfig $IFACE up
+    down /sbin/ifconfig $IFACE down
+```
+
+Other commands:
 `ip -details link show can0`: check can setup
 
 `candump can0`: Listen to CAN bus
