@@ -1,9 +1,11 @@
 # Concepts
 
 ## Devices:
+
 A device is any physical entity in the home with a single function.
 Examples:
-- switch: a single (press) button 
+
+- switch: a single (press) button
 - light
 - temperature sensor
 - motion sensor
@@ -11,17 +13,18 @@ Examples:
 
 Multiple devices can be connected to the same CAN module.
 Every device has a representationn in the `IOModules.json' config file on the server with the following properties:
+
 ```
 {
-  id // unique human readable id 
-  adress: { // depending on protocol device uses 
+  id // unique human readable id
+  adress: { // depending on protocol device uses
     // for CAN module :
     canAdress // Adress of the CAN module
     port //used port
     // for LAN module :
     IPadress // IP adress of the module
     ...
-    } 
+    }
   type // type of device, oneof ['switch', 'light', 'temperature',...]
   state: { // current state of the device, properties will depend on the type
     // for switch:
@@ -29,14 +32,17 @@ Every device has a representationn in the `IOModules.json' config file on the se
     // ligth:
     brigthness // number between 0 and 1
     color // if color light: RGB, HSV ... color
-  } 
+  }
 }
 ```
+
 State of all the devices will be kept in the system as a state object so that a state change doesnt have to result in a read write cycle to a file.
 
 ## Events:
-An event is a message send (broadcast) on the bus (both CAN bus as well websockets to all clients) that something has happened. E.g. the state of a device has changed. 
+
+An event is a message send (broadcast) on the bus (both CAN bus as well websockets to all clients) that something has happened. E.g. the state of a device has changed.
 An event message contains the following properties:
+
 ```
 {
   type // oneof ['stateChange', uiInput]
@@ -55,8 +61,10 @@ An event message contains the following properties:
 ```
 
 ## Actions:
+
 An action is a message send to a specific device to take an action. Which will most likely result in a stateChange event. E.g. Set the light on
 An action message contains the following properties:
+
 ```
 {
   deviceId // id of the device the action should be send to
@@ -69,39 +77,46 @@ An action message contains the following properties:
 ```
 
 # Configurations
+
 A couple of configurations are stored on the server
+
 - IOModules.json: list of existing devices on CAN bus or LAN: mainly discovered automatically
 - configuration.json: organisation of the devices within the home (mainly configured manually) (might delete later)
 - UIConfig.json: configuration of the (web) user interface interpretable by the ui to build the required cards
-- UIState: (temporary) Keeps the state of the web UI 
+- UIState: (temporary) Keeps the state of the web UI
 - logic.js: the automation logic: what should happen when
 
 ## configuration
+
 How devices are organised within the home and how they are named
+
 ```
 {
   deviceNames // a map of user friendly names for each device
   rooms:[ // existing rooms within the home
-    { 
+    {
       name // name of the room
       devices: { // existing devices in the room
         deviceId
-        location // location within the room 
+        location // location within the room
       }
     }
   ]
 }
 ```
 
-## UI config 
+## UI config
+
 configuration of how the ui looks like. Exists of 3 arrays of objects:
-- Rooms: an array with the rooms which the building consists of 
+
+- Rooms: an array with the rooms which the building consists of
 - Devices: All the controlable devices in the building
 - Actions
 
 Note: UI items get different id's than the physical 'devices' mentioned above. UI cannot access the devices directly, the server controls actions that should be send to the devices as a result of ui interactions.
 
 In short: UI cannot fire actions, only events.
+
 ```
 {
   rooms:[
@@ -139,15 +154,16 @@ In short: UI cannot fire actions, only events.
 ```
 
 ## Logic
+
 This defines the logic on what should happen when something happens
 It is a javascript file with a function that takes 1 argument: the event that just happened, it can return one or more actions that needs to be fired (array)
 The function can access and use the entire state to depend the action on.
 
-##Action Library
+## Action Library
+
 Since specific types of devices all could use the same action e.g. switch light on/of or set brightness it is usefull to make a library for these types of devices
-so you can reuse in logic.js 
+so you can reuse in logic.js
 
 ## UILogic
-Since UI and device logic isn't always a 1 to 1  mapping, it might be interesting to split these 2 logic files. UIlogic will translate a device event to the correct UIstate to send to the client browser
 
-
+Since UI and device logic isn't always a 1 to 1 mapping, it might be interesting to split these 2 logic files. UIlogic will translate a device event to the correct UIstate to send to the client browser

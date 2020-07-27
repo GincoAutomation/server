@@ -1,4 +1,5 @@
 const Gpio = require('onoff').Gpio;
+var can = require('socketcan');
 // eslint-disable-next-line no-unused-vars
 const testpin = new Gpio(1, 'in'); // test if we are running on rPi
 // const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
@@ -74,6 +75,20 @@ class Hardware {
       // light8: new Gpio(21, 'high'),
     };
 
+    this.canBus = can.createRawChannelWithOptions('can0', {
+      timestamps: true,
+      non_block_send: true
+    });
+    this.canBus.start();
+
+    this.canBus.addListener('onMessage', msg => {
+      console.log(
+        `Can message: (${(msg.ts_sec + msg.ts_usec / 1000000).toFixed(6)}) ${msg.id.toString(16)}# [${
+          msg.data.length
+        }] ${msg.data.toString('hex').toUpperCase()}`
+      );
+      this._fireEvent('buttonCAN', msg.id, msg.data);
+    });
     this.eventListeners = {};
   }
 
