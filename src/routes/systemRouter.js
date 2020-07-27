@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const ws = require('../websocket');
-const testHome = require('../../config/testHome');
 
 // Create interface to the system
 const system = require('../system/system');
