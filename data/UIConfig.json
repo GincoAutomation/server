@@ -66,7 +66,7 @@
   "devices":[
     {
       "name": "Lamp 1",
-      "room": "N/A",
+      "room": "Trappenhal",
       "type": "ceiling_lamp",
       "inputs": [
         {
@@ -78,7 +78,7 @@
     },
     {
       "name": "Lamp 2",
-      "room": "N/A",
+      "room": "Badkamer",
       "type": "ceiling_lamp",
       "inputs": [
         {
@@ -89,7 +89,7 @@
       ]
     },{
       "name": "Lamp 3",
-      "room": "N/A",
+      "room": "Keuken",
       "type": "ceiling_lamp",
       "inputs": [
         {
@@ -100,7 +100,7 @@
       ]
     },{
       "name": "Lamp 4",
-      "room": "N/A",
+      "room": "Living",
       "type": "ceiling_lamp",
       "inputs": [
         {

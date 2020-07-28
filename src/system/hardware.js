@@ -54,20 +54,20 @@ class Hardware {
         if (err) console.error(err);
         else {
           console.log(`Button ${id} ${value ? 'pressed' : 'released'}`);
-          this._fireEvent('button', id, value);
+          //this._fireEvent('button', id, value);
         }
       });
     });
 
     this.lights = {
-      light1: new Gpio(14, 'low'),
-      light2: new Gpio(15, 'low'),
-      light3: new Gpio(18, 'low'),
-      light4: new Gpio(23, 'low'),
-      light5: new Gpio(24, 'low'),
-      light6: new Gpio(16, 'low'),
-      light7: new Gpio(20, 'low'),
-      light8: new Gpio(21, 'low'),
+      light1: new Gpio(14, 'high'),
+      light2: new Gpio(15, 'high'),
+      light3: new Gpio(18, 'high'),
+      light4: new Gpio(23, 'high'),
+      light5: new Gpio(24, 'high'),
+      light6: new Gpio(16, 'high'),
+      light7: new Gpio(20, 'high'),
+      light8: new Gpio(21, 'high'),
     };
 
     this.eventListeners = {};
@@ -81,7 +81,7 @@ class Hardware {
   setLight(id, value) {
     if (this.lights[id]) {
       console.log(`Set light ${id} ${value ? 'on' : 'off'}`);
-      this.lights[id].writeSync(value ? 1 : 0);
+      this.lights[id].writeSync(value ? 0 : 1); // invert 
       this._fireEvent('light', id, value ? 1 : 0);
     } else console.error(`Light with id: ${id} does not exist`);
   }
