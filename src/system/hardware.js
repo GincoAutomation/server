@@ -60,14 +60,14 @@ class Hardware {
     });
 
     this.lights = {
-      light1: new Gpio(14, 'high'),
-      light2: new Gpio(15, 'high'),
-      light3: new Gpio(18, 'high'),
-      light4: new Gpio(23, 'high'),
-      light5: new Gpio(24, 'high'),
-      light6: new Gpio(16, 'high'),
-      light7: new Gpio(20, 'high'),
-      light8: new Gpio(21, 'high'),
+      light_out01: new Gpio(14, 'high'),
+      light_out02: new Gpio(15, 'high'),
+      light_out03: new Gpio(18, 'high'),
+      light_out04: new Gpio(23, 'high'),
+      light_out05: new Gpio(24, 'high'),
+      light_out06: new Gpio(16, 'high'),
+      light_out07: new Gpio(20, 'high'),
+      light_out08: new Gpio(21, 'high')
     };
 
     this.eventListeners = {};
@@ -78,10 +78,31 @@ class Hardware {
     Object.values(this.lights).forEach(light => light.unexport());
   }
 
+  passEvent(event) {
+    this._fireEvent('triggerEvent', event);
+  }
+
+  handleGPIOAction(action) {
+    /* set gpio pins */
+    var prevState = this.lights[action.deviceId].state;
+    console.log(`setting GPIO pin cooresponding with: ${action.deviceId}`);
+    this.setLight(action.deviceId, action.data.value);
+    let event = {
+      type: 'stateChange',
+      time: new Date().toISOString(),
+      data: {
+        deviceId: action.deviceId,
+        oldState: prevState,
+        state: action.data.value
+      }
+    };
+    this.passEvent(event);
+  }
+
   setLight(id, value) {
     if (this.lights[id]) {
       console.log(`Set light ${id} ${value ? 'on' : 'off'}`);
-      this.lights[id].writeSync(value ? 0 : 1); // invert 
+      this.lights[id].writeSync(value ? 0 : 1); // invert
       this._fireEvent('light', id, value ? 1 : 0);
     } else console.error(`Light with id: ${id} does not exist`);
   }

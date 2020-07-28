@@ -21,6 +21,23 @@ router.get('/uiState', function(req, res) {
   res.json(require('../../data/UIState'));
 });
 
+router.get('/onoffbutton', function(req, res) {
+  res.send('Will Do');
+  var butevent = {
+    type: 'uiInput',
+    time: new Date().toISOString(),
+    data: {
+      uiID: 'home_toggle',
+      type: 'toggle',
+      oldState: system.getState().home_toggle.checked,
+      state: !system.getState().home_toggle.checked,
+      client: 'TODO'
+    }
+  };
+  system.handleEvent(butevent);
+  res.send('Will Do');
+});
+
 router.post('/event', function(req, res) {
   system.handleEvent(req.body);
   res.json(system.getState());
