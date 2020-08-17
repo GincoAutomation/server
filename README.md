@@ -83,6 +83,8 @@ mkdir -p ./data/db
 
 #### Install CAN driver
 
+make sure kernel version is >= 5.4.51-v7+
+
 Original source: https://github.com/Seeed-Studio/seeed-linux-dtoverlays/tree/master/modules/CAN-HAT
 
 install drivers

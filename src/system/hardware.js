@@ -1,5 +1,6 @@
 const Gpio = require('onoff').Gpio;
 var can = require('socketcan');
+var CANAdapter = require('./CANAdapter');
 // eslint-disable-next-line no-unused-vars
 const testpin = new Gpio(1, 'in'); // test if we are running on rPi
 // const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
@@ -61,9 +62,9 @@ class Hardware {
     });
 
     this.lights = {
-      Blue: new Gpio(17, 'out'),
-      Green: new Gpio(27, 'out'),
-      Yellow: new Gpio(22, 'out')
+      light_out01: new Gpio(17, 'out'),
+      light_out02: new Gpio(27, 'out'),
+      light_out03: new Gpio(22, 'out')
 
       // light1: new Gpio(14, 'high'),
       // light2: new Gpio(15, 'high'),
@@ -82,14 +83,25 @@ class Hardware {
     this.canBus.start();
 
     this.canBus.addListener('onMessage', msg => {
-      console.log(
-        `Can message: (${(msg.ts_sec + msg.ts_usec / 1000000).toFixed(6)}) ${msg.id.toString(16)}# [${
-          msg.data.length
-        }] ${msg.data.toString('hex').toUpperCase()}`
-      );
-      this._fireEvent('buttonCAN', msg.id, msg.data);
+      this._fireEvent('hardwareInput', CANAdapter(msg));
     });
     this.eventListeners = {};
+  }
+
+  handleGPIOAction(action) {
+    /* set gpio pins */
+    var prevState = this.lights[action.deviceId].state;
+    this.setLight(action.deviceId, action.data.value);
+    let event = {
+      type: 'stateChange',
+      time: new Date().toISOString(),
+      data: {
+        deviceId: action.deviceId,
+        oldState: prevState,
+        state: action.data.value
+      }
+    };
+    this._fireEvent('triggerEvent', event);
   }
 
   shutdown() {

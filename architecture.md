@@ -19,7 +19,7 @@ Every device has a representationn in the `IOModules.json' config file on the se
   id // unique human readable id
   adress: { // depending on protocol device uses
     // for CAN module :
-    canAdress // Adress of the CAN module
+    address // Adress of the CAN module
     port //used port
     // for LAN module :
     IPadress // IP adress of the module
@@ -45,7 +45,7 @@ An event message contains the following properties:
 
 ```
 {
-  type // oneof ['stateChange', uiInput]
+  type // oneof ['stateChange', uiInput, hardwareInput]
   time // epoch timestamp when the event took place
   data { // depending on the type of event
     // for stateChange

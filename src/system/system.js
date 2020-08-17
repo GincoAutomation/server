@@ -1,4 +1,4 @@
-const sytemLogic = require('../../data/logic');
+const systemLogic = require('../../data/logic');
 
 let Hardware;
 try {
@@ -47,6 +47,7 @@ class System {
     // this.hardware.on('light', (id, value) => this._changeState('lights', id, value));
     // this.hardware.on('button', (id, value) => this._changeState('buttons', id, value));
     this.hardware.on('triggerEvent', event => this.handleEvent(event));
+    this.hardware.on('hardwareInput', event => this.handleEvent(event));
     this.eventListeners = {};
   }
 
@@ -96,7 +97,10 @@ class System {
       this._fireEvent('stateChange', this.UIstate);
     }
     if (event.type == 'uiInput') {
-      this.handleActions(sytemLogic(event, this.IOModules));
+      this.handleActions(systemLogic(event, this.IOModules));
+    }
+    if (event.type == 'hardwareInput') {
+      this.handleActions(systemLogic(event, this.IOModules));
     }
   }
 

@@ -16,7 +16,7 @@ channel.addListener('onMessage', msg =>
 );
 
 const msg = {
-  id: 0x43a,
+  id: 0x42a,
   data: Buffer.from([0x01, 0x02, 0x03, 0x04])
 };
 const ret = channel.send(msg);

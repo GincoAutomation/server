@@ -1,8 +1,8 @@
 const generateAction = require('./actionLibrary');
 module.exports = function(event, state) {
   var actions = [];
-  if (event.type == 'uiInput') {
-    const UI = {
+  const reactorIDs = {
+    uiInput: {
       home_toggle: () => {
         if (event.data.state) {
           actions.push(generateAction('LIGHT', 'ON', 'light_out01'));
@@ -150,8 +150,16 @@ module.exports = function(event, state) {
           //possibility to add more actions
         }
       }
-    };
-    UI[event.data.uiID]();
-    return actions;
-  }
+    },
+    hardwareInput: {
+      frontDoor_switch1: () => {
+        if (event.data.state == 'pressed') {
+          //toggle light
+          actions.push(generateAction('LIGHT', state.light_out01.state.value ? 'OFF' : 'ON', 'light_out01'));
+        }
+      }
+    }
+  };
+  reactorIDs[event.type][event.data.deviceId || event.data.uiID]();
+  return actions;
 };

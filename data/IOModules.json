@@ -1,160 +1,143 @@
 {
-  "frontDoor.switch1":{
-    "id":"frontDoor.switch1",
-    "comType":"CAN",
-    "canAdress": "N/A",
-    "port": 123,
-    "type":"SWITCH",
+  "frontDoor_switch1": {
+    "id": "frontDoor_switch1",
+    "comType": "CAN",
+    "address": "0x45a",
+    "port": 0,
+    "type": "SWITCH",
     "state": {
       "pressed": false
     }
-
   },
-  "kitchen.switch1":{
-    "id":"kitchen.switch1",
-    "comType":"CAN",
-    "canAdress": "N/A",
+  "kitchen.switch1": {
+    "id": "kitchen.switch1",
+    "comType": "CAN",
+    "address": "N/A",
     "port": 123,
-    "type":"SWITCH",
-    "state":  {
-      "pressed": false
-    }
-
-  },
-  "livingRoom.switch1":{
-    "id":"livingRoom.switch1",
-    "comType":"CAN",
-    "canAdress": "N/A",
-    "port": 123,
-    "type":"SWITCH",
+    "type": "SWITCH",
     "state": {
       "pressed": false
     }
-
   },
-  "livingRoom.switch2":{
-    "id":"livingRoom.switch2",
-    "comType":"CAN",
-    "canAdress": "N/A",
+  "livingRoom.switch1": {
+    "id": "livingRoom.switch1",
+    "comType": "CAN",
+    "address": "N/A",
     "port": 123,
-    "type":"SWITCH",
+    "type": "SWITCH",
     "state": {
       "pressed": false
     }
-
   },
-  "bedroom.switch1":{
-    "id":"bedroom.switch1",
-    "comType":"CAN",
-    "canAdress": "N/A",
+  "livingRoom.switch2": {
+    "id": "livingRoom.switch2",
+    "comType": "CAN",
+    "address": "N/A",
     "port": 123,
-    "type":"SWITCH",
+    "type": "SWITCH",
     "state": {
       "pressed": false
     }
-
   },
-  "bedroom.switch2":{
-    "id":"bedroom.switch2",
-    "comType":"CAN",
-    "canAdress": "N/A",
+  "bedroom.switch1": {
+    "id": "bedroom.switch1",
+    "comType": "CAN",
+    "address": "N/A",
     "port": 123,
-    "type":"SWITCH",
+    "type": "SWITCH",
     "state": {
       "pressed": false
     }
-
   },
-
-
-  "light_out01":{
-    "id":"light_out01",
-    "comType":"GPIO",
-    "canAdress": "N/A",
+  "bedroom.switch2": {
+    "id": "bedroom.switch2",
+    "comType": "CAN",
+    "address": "N/A",
     "port": 123,
-    "type":"LIGHT",
+    "type": "SWITCH",
     "state": {
-      "value": 0
+      "pressed": false
     }
-
   },
-  "light_out02":{
-    "id":"light_out02",
-    "comType":"GPIO",
-    "canAdress": "N/A",
-    "port": 123,
-    "type":"LIGHT",
-    "state": {
-      "value": 0
-    }
 
-  },
-  "light_out03":{
-    "id":"light_out03",
-    "comType":"GPIO",
-    "canAdress": "N/A",
-    "port": 123,
-    "type":"LIGHT",
-    "state": {
-      "value": 0
-    }
-
-  },
-  "light_out04":{
-    "id":"light_out04",
-    "comType":"GPIO",
-    "canAdress": "N/A",
-    "port": 123,
-    "type":"LIGHT",
-    "state": {
-      "value": 0
-    }
-
-  },
-  "light_out05":{
-    "id":"light_out05",
-    "comType":"GPIO",
-    "canAdress": "N/A",
-    "port": 123,
-    "type":"LIGHT",
-    "state": {
-      "value": 0
-    }
-
-  },
-  "light_out06":{
-    "id":"light_out06",
-    "comType":"GPIO",
-    "canAdress": "N/A",
-    "port": 123,
-    "type":"LIGHT",
-    "state": {
-      "value": 0
-    }
-
-  },
-  "light_out07":{
-    "id":"light_out07",
-    "comType":"GPIO",
-    "canAdress": "N/A",
-    "port": 123,
-    "type":"LIGHT",
+  "light_out01": {
+    "id": "light_out01",
+    "comType": "GPIO",
+    "address": 17,
+    "port": 0,
+    "type": "LIGHT",
     "state": {
       "value": 0
     }
   },
-  "light_out08":{
-    "id":"light_out08",
-    "comType":"GPIO",
-    "canAdress": "N/A",
-    "port": 123,
-    "type":"LIGHT",
+  "light_out02": {
+    "id": "light_out02",
+    "comType": "GPIO",
+    "address": 27,
+    "port": 0,
+    "type": "LIGHT",
     "state": {
       "value": 0
     }
-
+  },
+  "light_out03": {
+    "id": "light_out03",
+    "comType": "GPIO",
+    "address": 22,
+    "port": 0,
+    "type": "LIGHT",
+    "state": {
+      "value": 0
+    }
+  },
+  "light_out04": {
+    "id": "light_out04",
+    "comType": "GPIO",
+    "address": "N/A",
+    "port": 123,
+    "type": "LIGHT",
+    "state": {
+      "value": 0
+    }
+  },
+  "light_out05": {
+    "id": "light_out05",
+    "comType": "GPIO",
+    "address": "N/A",
+    "port": 123,
+    "type": "LIGHT",
+    "state": {
+      "value": 0
+    }
+  },
+  "light_out06": {
+    "id": "light_out06",
+    "comType": "GPIO",
+    "address": "N/A",
+    "port": 123,
+    "type": "LIGHT",
+    "state": {
+      "value": 0
+    }
+  },
+  "light_out07": {
+    "id": "light_out07",
+    "comType": "GPIO",
+    "address": "N/A",
+    "port": 123,
+    "type": "LIGHT",
+    "state": {
+      "value": 0
+    }
+  },
+  "light_out08": {
+    "id": "light_out08",
+    "comType": "GPIO",
+    "address": "N/A",
+    "port": 123,
+    "type": "LIGHT",
+    "state": {
+      "value": 0
+    }
   }
 }
-
-
-
