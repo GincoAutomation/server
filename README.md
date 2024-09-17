@@ -1,5 +1,5 @@
 # Backend server for Home Automation
-
+# dit is eigenlijk compleet nutteloos
 ## Setup development computer
 - Install [Git](https://git-scm.com/downloads). On Windows, make sure you also install the git bash tool and set line-endings to LF (unix style).
 - Optionally install any [Git client](https://git-scm.com/downloads/guis) you like, SourceTree is recommended.
